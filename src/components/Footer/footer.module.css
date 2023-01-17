@@ -1,0 +1,45 @@
+.wr {
+  background: burlywood;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 0 15px 1px black;
+}
+
+.footer_container {
+  display: flex;
+  justify-content: center;
+}
+
+.footer_group {
+  margin-right: 80px;
+}
+
+.footer_copyright {
+  margin-top: 40px;
+  text-align: center;
+  opacity: 0.5;
+}
+
+.footer_group h5 {
+  font-size: 16px;
+  opacity: 0.7;
+  margin-bottom: 30px;
+}
+
+.footer_links {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer_links a {
+  margin-bottom: 5px;
+  color: white;
+}
+
+.footer_links a:hover {
+  color: wheat;
+}

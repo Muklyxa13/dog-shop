@@ -1,0 +1,46 @@
+.wr {
+  align-items: center;
+  padding: 10px;
+  background: white;
+  box-shadow: 0 1px 15px 1px black;
+}
+
+.headerLink {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.logoImg {
+  height: 100px;
+  width: 100px;
+}
+
+.headerUl {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-right: 20px;
+}
+
+.headerUl li {
+  border: 2px solid wheat;
+  border-radius: 4px;
+  background-color: white;
+  padding: 5px;
+}
+
+.headerUl li:hover {
+  box-shadow: 0 0 10px 5px wheat;
+}
+
+.headerUl li a {
+  color: black;
+}
+
+.activeLink {
+  opacity: 0.4;
+}
