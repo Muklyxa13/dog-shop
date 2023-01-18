@@ -1,8 +1,8 @@
 .wr {
-  align-items: center;
-  padding: 10px;
   background: white;
-  box-shadow: 0 1px 15px 1px black;
+  box-shadow: 0 0 15px 10px white;
+  position: sticky;
+  top: 0;
 }
 
 .headerLink {
@@ -14,8 +14,8 @@
 }
 
 .logoImg {
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
 }
 
 .headerUl {
@@ -27,18 +27,18 @@
 }
 
 .headerUl li {
-  border: 2px solid wheat;
-  border-radius: 4px;
-  background-color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: rgba(17, 28, 51, 0.9);
   padding: 5px;
 }
 
 .headerUl li:hover {
-  box-shadow: 0 0 10px 5px wheat;
+  box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
 }
 
 .headerUl li a {
-  color: black;
+  color: white;
 }
 
 .activeLink {
@@ -47,17 +47,17 @@
 
 .productsLink {
   align-self: center;
-  border: 2px solid wheat;
-  border-radius: 4px;
+  border: 2px solid white;
+  border-radius: 10px;
   padding: 5px;
   height: 100%;
-  background-color: white;
+  background-color: rgba(17, 28, 51, 0.9);
 }
 
 .productsLink li a {
-  color: black;
+  color: white;
 }
 
 .productsLink:hover {
-  box-shadow: 0 0 10px 5px wheat;
+  box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
 }

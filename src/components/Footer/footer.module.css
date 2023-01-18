@@ -1,12 +1,10 @@
 .wr {
-  background: burlywood;
-  padding-top: 90px;
-  padding-bottom: 90px;
-  padding-right: 20px;
-  padding-left: 20px;
+  background: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
   font-size: 16px;
   font-weight: 600;
-  box-shadow: 0 0 15px 1px black;
+  box-shadow: 0 0 15px 10px white;
 }
 
 .footer_container {
@@ -19,7 +17,7 @@
 }
 
 .footer_copyright {
-  margin-top: 40px;
+  margin-top: 10px;
   text-align: center;
   opacity: 0.5;
 }
@@ -27,7 +25,7 @@
 .footer_group h5 {
   font-size: 16px;
   opacity: 0.7;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .footer_links {
@@ -36,10 +34,11 @@
 }
 
 .footer_links a {
-  margin-bottom: 5px;
-  color: white;
+  margin-bottom: 2px;
+  color: rgba(17, 28, 51, 0.9);
 }
 
 .footer_links a:hover {
-  color: wheat;
+  color: black;
+  text-shadow: 0 0 2px black;
 }
