@@ -18,6 +18,18 @@ export const Header = () => {
               ></img>
             </Link>
           </li>
+          <div className={headerStyles.productsLink}>
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  classNames({ [headerStyles.activeLink]: isActive })
+                }
+                to="/products"
+              >
+                Каталог
+              </NavLink>
+            </li>
+          </div>
           <div className={headerStyles.headerUl}>
             <li>
               <NavLink
