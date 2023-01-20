@@ -57,7 +57,7 @@ export const SignUp = () => {
           <ErrorMessage component="p" className="error" name="email" />
 
           <label htmlFor="group">Введите вашу группу</label>
-          <Field name="group" placeholder="Группа" type="text" />
+          <Field name="group" placeholder='Введите "sm9"' type="text" />
           <ErrorMessage component="p" className="error" name="group" />
 
           <label htmlFor="password">Введите пароль</label>

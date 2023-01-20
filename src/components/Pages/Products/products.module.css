@@ -1,5 +1,16 @@
-.wr {
+.errorMessage {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.errorMessage button {
+    margin-top: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+    background: white;
+}
+
+.errorMessage button:hover {
+    box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
 }

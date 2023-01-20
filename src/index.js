@@ -8,6 +8,8 @@ import { SignUp } from "./components/Pages/SignUp/SignUp"
 import { Products } from "./components/Pages/Products/Products"
 import { Main } from "./components/Main/Main"
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { DogShopContextProvider } from "./Contexts/DogShopContextProvider"
+import { SignOut } from "./components/Pages/SignOut/SignOut"
 
 const router = createBrowserRouter([
   {
@@ -17,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "signin",
         element: <SignIn />,
+      },
+      {
+        path: "signout",
+        element: <SignOut />,
       },
       {
         path: "signup",
@@ -34,16 +40,24 @@ const router = createBrowserRouter([
     ],
   },
 ], 
-{ basename: "/dog-shop" }
+// { basename: "/dog-shop" }
 )
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    }
+  }
+})
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <DogShopContextProvider>
+        <RouterProvider router={router} />
+      </DogShopContextProvider>
     </QueryClientProvider>
   </React.StrictMode>
 )

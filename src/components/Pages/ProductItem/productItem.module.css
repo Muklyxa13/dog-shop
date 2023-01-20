@@ -1,0 +1,43 @@
+.wr {
+    display: grid;
+    width: 250px;
+}
+
+.itemImg {
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px white;
+    margin-bottom: 8px;
+    margin-left: 6px;
+    margin-top: 6px;
+}
+
+.item {
+    display: grid;
+    justify-content: center;
+    border: 1px solid;
+    border-radius: 10px;
+    width: auto;
+    margin: 4px;
+    padding: 10px;
+    background-color: rgb(13, 30, 66);
+    color: white;
+}
+
+.itemButton {
+    border-radius: 8px;
+    height: 100%;
+    width: auto;
+}
+
+.itemButton:hover {
+    box-shadow: 0 0 6px 0 white;
+}
+
+p {
+    margin-bottom: 4px;
+}
+
+span {
+    color: yellow;
+}

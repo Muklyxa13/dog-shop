@@ -5,6 +5,11 @@ import classNames from "classnames"
 import logoImg from "../../images/logo.jpg"
 
 export const Header = () => {
+  const deleteToken = () => {
+    localStorage.removeItem("DOGSHOP_LS_KEY")
+    localStorage.removeItem("TOKEN_LS")
+  }
+
   return (
     <header className={headerStyles.wr}>
       <nav>
@@ -31,6 +36,17 @@ export const Header = () => {
             </li>
           </div>
           <div className={headerStyles.headerUl}>
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  classNames({ [headerStyles.activeLink]: isActive })
+                }
+                to="/"
+                onClick={deleteToken}
+              >
+                Выйти
+              </NavLink>
+            </li>
             <li>
               <NavLink
                 className={({ isActive }) =>

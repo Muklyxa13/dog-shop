@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom"
 import { Loader } from "../../Loader/Loader"
 import { createSignInFormValidationScheme } from "./validator"
 import formStyles from "./signIn.module.css"
+import { useContext } from "react"
+import { DogShopContext } from "../../../Contexts/DogShopContextProvider"
 
 const initialLoginValues = {
   email: "",
@@ -15,12 +17,15 @@ const TOKEN_LS = "TOKEN_LS"
 export const SignIn = () => {
   const navigate = useNavigate()
 
+  const { setToken } = useContext(DogShopContext)
+
   const { mutateAsync, isLoading, isError, error } = useMutation({
     mutationFn: (data) => {
       return fetch("https://api.react-learning.ru/signin", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
+          // authorization: `Bearer ${data.token}`,
         },
         body: JSON.stringify(data),
       })
@@ -41,20 +46,19 @@ export const SignIn = () => {
         .then((res) => res.json())
         .then((data) => {
           localStorage.setItem(TOKEN_LS, data.token)
+          setToken(data.token)
         })
     },
   })
 
   const submitHandler = async (values) => {
     await mutateAsync(values)
-
-    navigate("/")
+    setTimeout(() => {
+      navigate(`/products`)
+    }, 0)
   }
 
-  if (isError) {
-    return <p>{error.message}</p>
-  }
-
+  if (isError) return <p>{error.message}</p>
   if (isLoading) return <Loader />
 
   return (

@@ -20,12 +20,13 @@
 }
 
 .formSignIn button {
-  border: 1px solid wheat;
+  border: 1px solid black;
   border-radius: 8px;
   width: 150px;
   align-self: center;
+  margin-top: 14px;
 }
 
 .formSignIn button:hover {
-  box-shadow: 0 0 5px 2px wheat;
+  box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
 }
