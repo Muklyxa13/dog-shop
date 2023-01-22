@@ -6,6 +6,7 @@ import { createSignInFormValidationScheme } from "./validator"
 import formStyles from "./signIn.module.css"
 import { useContext } from "react"
 import { DogShopContext } from "../../../Contexts/DogShopContextProvider"
+// import dog_1 from "../../../images/dog_1.jpg"
 
 const initialLoginValues = {
   email: "",

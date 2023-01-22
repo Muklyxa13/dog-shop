@@ -45,10 +45,15 @@ export const Products = () => {
         </button>
       </div>
     )
+
   if (isLoading) return <Loader />
   if (!data.products.length) return <p>Упс..</p>
 
-  return data.products.map((product, index) => (
-    <ProductItem product={product} key={index} />
-  ))
+  return (
+    <ul className={productsStyles.productsList}>
+      {data.products.map((product, index) => (
+        <ProductItem product={product} key={index} />
+      ))}
+    </ul>
+  )
 }

@@ -1,10 +1,12 @@
 .wr {
   background: white;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  font-size: 16px;
+  padding-top: 6px;
+  padding-bottom: 4px;
+  font-size: 14px;
   font-weight: 600;
-  box-shadow: 0 0 15px 10px white;
+  box-shadow: 0 0 10px 10px white;
+  position: sticky;
+  bottom: 0;
 }
 
 .footer_container {
