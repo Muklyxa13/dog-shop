@@ -61,3 +61,15 @@
 .productsLink:hover {
   box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
 }
+
+.exitBtn {
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: rgba(17, 28, 51, 0.9);
+  padding: 5px;
+  color: white;
+}
+
+.exitBtn:hover {
+  box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
+}

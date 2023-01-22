@@ -37,6 +37,7 @@ select {
   min-height: 100vh;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }

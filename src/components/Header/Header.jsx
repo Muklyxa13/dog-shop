@@ -1,14 +1,17 @@
-import { memo } from "react"
+import { memo, useContext } from "react"
 import { Link, NavLink } from "react-router-dom"
 import headerStyles from "./header.module.css"
 import classNames from "classnames"
 import logoImg from "../../images/logo.jpg"
+import { DogShopContext } from "../../Contexts/DogShopContextProvider"
 
 export const Header = () => {
-  const deleteToken = () => {
-    localStorage.removeItem("DOGSHOP_LS_KEY")
-    localStorage.removeItem("TOKEN_LS")
-  }
+  // const deleteToken = () => {
+  //   localStorage.removeItem("DOGSHOP_LS_KEY")
+  //   localStorage.removeItem("TOKEN_LS")
+  // }
+
+  const { removeToken, Token } = useContext(DogShopContext)
 
   return (
     <header className={headerStyles.wr}>
@@ -36,17 +39,13 @@ export const Header = () => {
             </li>
           </div>
           <div className={headerStyles.headerUl}>
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  classNames({ [headerStyles.activeLink]: isActive })
-                }
-                to="/"
-                onClick={deleteToken}
-              >
-                Выйти
-              </NavLink>
-            </li>
+            <button
+              className={Token ? headerStyles.exit : headerStyles.exitBtn}
+              type="button"
+              onClick={removeToken}
+            >
+              Выйти
+            </button>
             <li>
               <NavLink
                 className={({ isActive }) =>

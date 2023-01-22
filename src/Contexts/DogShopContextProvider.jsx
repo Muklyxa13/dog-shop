@@ -1,6 +1,4 @@
-import { useEffect } from "react"
-import { useState } from "react"
-import { createContext } from "react"
+import { useCallback, useEffect, useState, createContext } from "react"
 
 export const DogShopContext = createContext()
 
@@ -19,8 +17,10 @@ export const DogShopContextProvider = ({ children }) => {
     localStorage.setItem(DOGSHOP_LS_KEY, JSON.stringify(token))
   }, [token])
 
+  const removeToken = useCallback(() => setToken(""), [setToken])
+
   return (
-    <DogShopContext.Provider value={{ token, setToken }}>
+    <DogShopContext.Provider value={{ token, setToken, removeToken }}>
       {children}
     </DogShopContext.Provider>
   )

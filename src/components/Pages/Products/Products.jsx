@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { useEffect } from "react"
-import { useContext } from "react"
+import { useEffect, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { DogShopContext } from "../../../Contexts/DogShopContextProvider"
 import { Loader } from "../../Loader/Loader"

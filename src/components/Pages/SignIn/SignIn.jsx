@@ -12,7 +12,7 @@ const initialLoginValues = {
   password: "",
 }
 
-const TOKEN_LS = "TOKEN_LS"
+// const TOKEN_LS = "TOKEN_LS"
 
 export const SignIn = () => {
   const navigate = useNavigate()
@@ -45,7 +45,7 @@ export const SignIn = () => {
         })
         .then((res) => res.json())
         .then((data) => {
-          localStorage.setItem(TOKEN_LS, data.token)
+          // localStorage.setItem(DogShopContext, data.token)
           setToken(data.token)
         })
     },
