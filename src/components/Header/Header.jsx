@@ -11,7 +11,7 @@ export const Header = () => {
   //   localStorage.removeItem("TOKEN_LS")
   // }
 
-  const { removeToken, Token } = useContext(DogShopContext)
+  const { removeToken, token } = useContext(DogShopContext)
 
   return (
     <header className={headerStyles.wr}>
@@ -39,23 +39,30 @@ export const Header = () => {
             </li>
           </div>
           <div className={headerStyles.headerUl}>
-            <button
-              className={Token ? headerStyles.exit : headerStyles.exitBtn}
-              type="button"
-              onClick={removeToken}
-            >
-              Выйти
-            </button>
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  classNames({ [headerStyles.activeLink]: isActive })
-                }
-                to="/signin"
-              >
-                Войти
-              </NavLink>
-            </li>
+            {token ? (
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    classNames({ [headerStyles.activeLink]: isActive })
+                  }
+                  to="/signin"
+                  onClick={removeToken}
+                >
+                  Выйти
+                </NavLink>
+              </li>
+            ) : (
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    classNames({ [headerStyles.activeLink]: isActive })
+                  }
+                  to="/signin"
+                >
+                  Войти
+                </NavLink>
+              </li>
+            )}
             <li>
               <NavLink
                 className={({ isActive }) =>
