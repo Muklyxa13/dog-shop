@@ -6,14 +6,12 @@ import { createSignInFormValidationScheme } from "./validator"
 import formStyles from "./signIn.module.css"
 import { useContext } from "react"
 import { DogShopContext } from "../../../Contexts/DogShopContextProvider"
-// import dog_1 from "../../../images/dog_1.jpg"
+import { dogFoodApi } from "../../../API/DogFoodApi"
 
 const initialLoginValues = {
   email: "",
   password: "",
 }
-
-// const TOKEN_LS = "TOKEN_LS"
 
 export const SignIn = () => {
   const navigate = useNavigate()
@@ -21,35 +19,10 @@ export const SignIn = () => {
   const { setToken } = useContext(DogShopContext)
 
   const { mutateAsync, isLoading, isError, error } = useMutation({
-    mutationFn: (data) => {
-      return fetch("https://api.react-learning.ru/signin", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-          // authorization: `Bearer ${data.token}`,
-        },
-        body: JSON.stringify(data),
-      })
-        .then((res) => {
-          if (res.status === 401) {
-            throw new Error(
-              `Ошибка ${res.status}: не правильные логин или пароль`
-            )
-          }
-          if (res.status === 404) {
-            throw new Error(
-              `Ошибка ${res.status}: пользователь с email не найден`
-            )
-          }
-
-          return res
-        })
-        .then((res) => res.json())
-        .then((data) => {
-          // localStorage.setItem(DogShopContext, data.token)
-          setToken(data.token)
-        })
-    },
+    mutationFn: (values) =>
+      dogFoodApi.signIn(values).then((data) => {
+        setToken(data.token)
+      }),
   })
 
   const submitHandler = async (values) => {

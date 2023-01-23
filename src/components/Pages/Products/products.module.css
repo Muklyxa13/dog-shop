@@ -15,7 +15,7 @@
   box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
 }
 
-.productsList{
+.productsList {
   display: grid;
   gap: 20px;
   justify-content: center;

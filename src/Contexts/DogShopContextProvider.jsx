@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState, createContext } from "react"
+import { dogFoodApi } from "../API/DogFoodApi"
 
 export const DogShopContext = createContext()
 
@@ -15,6 +16,7 @@ export const DogShopContextProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem(DOGSHOP_LS_KEY, JSON.stringify(token))
+    dogFoodApi.setToken(token)
   }, [token])
 
   const removeToken = useCallback(() => setToken(""), [setToken])

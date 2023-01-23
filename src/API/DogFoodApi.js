@@ -1,33 +1,98 @@
-// class DogFoodApi {
-//     constructor({baseUrl}) {
-//         this.baseUrl = baseUrl
+class DogFoodApi {
+  constructor({ baseUrl }) {
+    this.baseUrl = baseUrl
 
-//         this.token = ''
-//     }
+    this.token = ""
+  }
 
-//     getAuthorizationHandler() {
-//         return `Bearer ${this.token}`
-//     }
+  getAuthorizationHandler() {
+    return `Bearer ${this.token}`
+  }
 
-//     checkToken() {
-//         this.token = token
-//     }
+  setToken(token) {
+    this.token = token
+  }
 
-//     async signIn() {
-//         const res = await fetch({
+  checkToken() {
+    if (!this.token) throw new Error("Отсутствует токен")
+  }
 
-//         }
-        
-//         if (res.status === 401) {
+  async signIn(values) {
+    const res = await fetch(`${this.baseUrl}/signin`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    })
 
-//         }
-//         if (res.status === 401) {
+    if (res.status === 401) {
+      throw new Error("Неверные логин или пароль")
+    }
 
-//         }
+    if (res.status === 404) {
+      throw new Error("Пользователь с указанным email не найден")
+    }
 
-//         return res.json()
-//         )
-//     }
-// }
+    if (res.status >= 300) {
+      throw new Error(`Ошибка, код ${res.status}`)
+    }
 
-// export const dogFoodApi = new DogFoodApi()
+    return res.json()
+  }
+
+  async signUp(values) {
+    const res = await fetch(`${this.baseUrl}/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    })
+
+    if (res.status > 299) {
+      throw new Error(
+        `Ошибка ${res.status}: пользователь с таким email уже зарегистрирован`
+      )
+    }
+
+    return res.json()
+  }
+
+  async getAllProducts() {
+    this.checkToken()
+
+    const res = await fetch(`${this.baseUrl}/products`, {
+      headers: {
+        authorization: this.getAuthorizationHandler(),
+      },
+    })
+
+    if (res.status > 299) {
+      throw new Error(
+        `Ошибка при получении списка продуктов. Status: ${res.status}`
+      )
+    }
+
+    return res.json()
+  }
+
+  async getProductById(productId) {
+    this.checkToken()
+
+    const res = await fetch(`${this.baseUrl}/products/${productId}`, {
+      headers: {
+        authorization: this.getAuthorizationHandler(),
+      },
+    })
+    console.log(res)
+  }
+
+  async getProductsByIds() {
+    this.checkToken()
+  }
+}
+
+export const dogFoodApi = new DogFoodApi({
+  baseUrl: "https://api.react-learning.ru",
+})

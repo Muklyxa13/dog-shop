@@ -2,8 +2,9 @@ import { ErrorMessage, Field, Form, Formik } from "formik"
 import { createSignUpFormValidationScheme } from "./validator"
 import formStyles from "./signUp.module.css"
 import { useMutation } from "@tanstack/react-query"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Loader } from "../../Loader/Loader"
+import { dogFoodApi } from "../../../API/DogFoodApi"
 
 const initialRegisterValues = {
   email: "",
@@ -15,21 +16,7 @@ export const SignUp = () => {
   const navigate = useNavigate()
 
   const { mutateAsync, isLoading, isError, error } = useMutation({
-    mutationFn: (data) => {
-      return fetch("https://api.react-learning.ru/signup", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }).then((res) => {
-        if (res.status > 299) {
-          throw new Error(
-            `Ошибка ${res.status}: пользователь с таким email уже зарегистрирован`
-          )
-        } else res.json()
-      })
-    },
+    mutationFn: (values) => dogFoodApi.signUp(values),
   })
 
   const submitHandler = async (values) => {
@@ -39,7 +26,14 @@ export const SignUp = () => {
   }
 
   if (isError) {
-    return <p>{error.message}</p>
+    return (
+      <div className={formStyles.errorMessage}>
+        <p className={formStyles.error}>{error.message}</p>
+        <Link className={formStyles.errorBtn} to="/">
+          На главную
+        </Link>
+      </div>
+    )
   }
 
   if (isLoading) return <Loader />

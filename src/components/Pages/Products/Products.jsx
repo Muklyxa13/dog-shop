@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import { useEffect, useContext } from "react"
 import { useNavigate } from "react-router-dom"
+import { dogFoodApi } from "../../../API/DogFoodApi"
 import { DogShopContext } from "../../../Contexts/DogShopContextProvider"
 import { Loader } from "../../Loader/Loader"
 import { ProductItem } from "../ProductItem/ProductItem"
@@ -19,20 +20,7 @@ export const Products = () => {
 
   const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["productsfetch"],
-    queryFn: () =>
-      fetch("https://api.react-learning.ru/products", {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      }).then((res) => {
-        if (res.status > 299) {
-          throw new Error(
-            `Ошибка при получении списка продуктов. Status: ${res.status}`
-          )
-        }
-
-        return res.json()
-      }),
+    queryFn: () => dogFoodApi.getAllProducts(),
     enabled: token !== undefined,
   })
 
