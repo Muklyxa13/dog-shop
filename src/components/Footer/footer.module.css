@@ -1,12 +1,10 @@
 .wr {
   background: white;
-  padding-top: 6px;
-  padding-bottom: 4px;
-  font-size: 14px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  font-size: 16px;
   font-weight: 600;
   box-shadow: 0 0 10px 10px white;
-  position: sticky;
-  bottom: 0;
 }
 
 .footer_container {
@@ -41,6 +39,5 @@
 }
 
 .footer_links a:hover {
-  color: black;
-  text-shadow: 0 0 2px black;
+  text-shadow: 0 0 3px rgba(17, 28, 51, .5);
 }

@@ -6,6 +6,10 @@ import { DogShopContext } from "../../../Contexts/DogShopContextProvider"
 import { Loader } from "../../Loader/Loader"
 import { ProductItem } from "../ProductItem/ProductItem"
 import productsStyles from "./products.module.css"
+import "./scroll.scss"
+import classNames from "classnames"
+import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export const Products = () => {
   const { token } = useContext(DogShopContext)
@@ -37,11 +41,31 @@ export const Products = () => {
   if (isLoading) return <Loader />
   if (!data.products.length) return <p>Упс..</p>
 
+  const clickToScrollUp = () => {
+    window.scrollTo(0, 0)
+  }
+
+  const clickToScrollDown = () => {
+    window.scrollTo(0, document.body.scrollHeight)
+  }
+
   return (
-    <ul className={productsStyles.productsList}>
-      {data.products.map((product, index) => (
-        <ProductItem product={product} key={index} />
-      ))}
-    </ul>
+    <div>
+      <ul className={productsStyles.productsList}>
+        {data.products.map(({ _id: id, ...restProduct }) => (
+          <ProductItem {...restProduct} id={id} key={id} />
+        ))}
+      </ul>
+      <FontAwesomeIcon
+        onClick={clickToScrollUp}
+        className={classNames("scroll", "scrollUp")}
+        icon={faCaretUp}
+      />
+      <FontAwesomeIcon
+        onClick={clickToScrollDown}
+        className={classNames("scroll", "scrollDown")}
+        icon={faCaretDown}
+      />
+    </div>
   )
 }

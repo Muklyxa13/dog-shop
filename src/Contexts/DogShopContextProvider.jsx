@@ -9,13 +9,13 @@ const DOGSHOP_LS_KEY = "DOGSHOP_LS_KEY"
 export const DogShopContextProvider = ({ children }) => {
   const [token, setToken] = useState(() => {
     const tokenFromLS = localStorage.getItem(DOGSHOP_LS_KEY)
-    const preparedData = tokenFromLS ? JSON.parse(tokenFromLS) : []
+    // const preparedData = tokenFromLS ? JSON.parse(tokenFromLS) : ""
 
-    return preparedData
+    return tokenFromLS || ""
   })
 
   useEffect(() => {
-    localStorage.setItem(DOGSHOP_LS_KEY, JSON.stringify(token))
+    localStorage.setItem(DOGSHOP_LS_KEY, token)
     dogFoodApi.setToken(token)
   }, [token])
 

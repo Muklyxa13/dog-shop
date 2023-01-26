@@ -1,9 +1,13 @@
 import productItemStyles from "./productItem.module.css"
 import PropTypes from "prop-types"
 
-export const ProductItem = ({ product }) => {
-  const { pictures, discount, price, stock, description } = product
-
+export const ProductItem = ({
+  pictures,
+  discount,
+  price,
+  stock,
+  description,
+}) => {
   return (
     // <div className={productItemStyles.wr}>
     <div className={productItemStyles.item}>
@@ -29,5 +33,9 @@ export const ProductItem = ({ product }) => {
 }
 
 ProductItem.propTypes = {
-  product: PropTypes.object,
+  pictures: PropTypes.string,
+  discount: PropTypes.number,
+  price: PropTypes.number,
+  stock: PropTypes.number,
+  description: PropTypes.string,
 }

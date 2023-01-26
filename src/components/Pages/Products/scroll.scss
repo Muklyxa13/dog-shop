@@ -1,0 +1,41 @@
+.scroll {
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background: rgba(17, 28, 51, 0.9);
+    opacity: .5;
+}
+
+.scrollUp {
+    position: fixed;
+    bottom: 360px;
+    right: 50px;
+}
+
+.scrollDown {
+    position: fixed;
+    bottom: 290px;
+    right: 50px;
+}
+
+.scroll:hover {
+    box-shadow: 0 0 5px 5px rgba(17, 28, 51, 0.9);
+}
+
+// .isShowBtnUp {
+// opacity: 1;
+// transition: .5s;
+//     &_hide {
+//         opacity: 0;
+//     }
+// }
+
+// .isShowBtnDown {
+//     opacity: 1;
+//     transition: .5s;
+//     &_hide {
+//         opacity: 0;
+//     }
+// }
