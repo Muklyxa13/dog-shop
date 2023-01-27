@@ -1,6 +1,6 @@
 import { memo, useContext } from "react"
 import { Link, NavLink } from "react-router-dom"
-import headerStyles from "./header.module.css"
+import styles from "./header.module.css"
 import classNames from "classnames"
 import logoImg from "../../images/logo.jpg"
 import { DogShopContext } from "../../Contexts/DogShopContextProvider"
@@ -14,23 +14,19 @@ export const Header = () => {
   const { removeToken, token } = useContext(DogShopContext)
 
   return (
-    <header className={headerStyles.wr}>
+    <header className={styles.wr}>
       <nav>
-        <ul className={headerStyles.headerLink}>
+        <ul className={styles.headerLink}>
           <li>
             <Link to="/">
-              <img
-                className={headerStyles.logoImg}
-                src={logoImg}
-                alt="логотип"
-              ></img>
+              <img className={styles.logoImg} src={logoImg} alt="логотип"></img>
             </Link>
           </li>
-          <div className={headerStyles.productsLink}>
+          <div className={styles.productsLink}>
             <li>
               <NavLink
                 className={({ isActive }) =>
-                  classNames({ [headerStyles.activeLink]: isActive })
+                  classNames({ [styles.activeLink]: isActive })
                 }
                 to="/products"
               >
@@ -38,12 +34,12 @@ export const Header = () => {
               </NavLink>
             </li>
           </div>
-          <div className={headerStyles.headerUl}>
+          <div className={styles.headerUl}>
             {token ? (
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    classNames({ [headerStyles.activeLink]: isActive })
+                    classNames({ [styles.activeLink]: isActive })
                   }
                   to="/signin"
                   onClick={removeToken}
@@ -55,7 +51,7 @@ export const Header = () => {
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    classNames({ [headerStyles.activeLink]: isActive })
+                    classNames({ [styles.activeLink]: isActive })
                   }
                   to="/signin"
                 >
@@ -66,7 +62,7 @@ export const Header = () => {
             <li>
               <NavLink
                 className={({ isActive }) =>
-                  classNames({ [headerStyles.activeLink]: isActive })
+                  classNames({ [styles.activeLink]: isActive })
                 }
                 to="/signup"
               >

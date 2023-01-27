@@ -39,5 +39,5 @@
 }
 
 .footer_links a:hover {
-  text-shadow: 0 0 3px rgba(17, 28, 51, .5);
+  text-shadow: 0 0 3px rgba(17, 28, 51, 0.5);
 }

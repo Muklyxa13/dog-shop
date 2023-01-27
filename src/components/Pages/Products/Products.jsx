@@ -5,7 +5,7 @@ import { dogFoodApi } from "../../../API/DogFoodApi"
 import { DogShopContext } from "../../../Contexts/DogShopContextProvider"
 import { Loader } from "../../Loader/Loader"
 import { ProductItem } from "../ProductItem/ProductItem"
-import productsStyles from "./products.module.css"
+import styles from "./products.module.css"
 import "./scroll.scss"
 import classNames from "classnames"
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons"
@@ -30,7 +30,7 @@ export const Products = () => {
 
   if (isError)
     return (
-      <div className={productsStyles.errorMessage}>
+      <div className={styles.errorMessage}>
         <p>{error.message}</p>
         <button onClick={refetch} type="button">
           Повторить запрос
@@ -51,7 +51,7 @@ export const Products = () => {
 
   return (
     <div>
-      <ul className={productsStyles.productsList}>
+      <ul className={styles.productsList}>
         {data.products.map(({ _id: id, ...restProduct }) => (
           <ProductItem {...restProduct} id={id} key={id} />
         ))}

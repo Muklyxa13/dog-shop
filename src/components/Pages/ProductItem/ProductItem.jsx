@@ -1,4 +1,4 @@
-import productItemStyles from "./productItem.module.css"
+import styles from "./productItem.module.css"
 import PropTypes from "prop-types"
 
 export const ProductItem = ({
@@ -9,9 +9,8 @@ export const ProductItem = ({
   description,
 }) => {
   return (
-    // <div className={productItemStyles.wr}>
-    <div className={productItemStyles.item}>
-      <img className={productItemStyles.itemImg} src={pictures} alt="product" />
+    <div className={styles.item}>
+      <img className={styles.itemImg} src={pictures} alt="product" />
       <p>
         <span>Скида:</span> {discount} %
       </p>
@@ -23,12 +22,11 @@ export const ProductItem = ({
       </p>
       <span>Описание товара:</span>
       <p>&quot;{description}&quot;</p>
-      <div className={productItemStyles.blockBtn}>
-        <button className={productItemStyles.itemButton}>В корзину</button>
-        <button className={productItemStyles.itemButton}>В избранное</button>
+      <div className={styles.blockBtn}>
+        <button className={styles.itemButton}>В корзину</button>
+        <button className={styles.itemButton}>В избранное</button>
       </div>
     </div>
-    // </div>
   )
 }
 

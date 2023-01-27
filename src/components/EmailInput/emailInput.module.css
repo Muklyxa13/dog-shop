@@ -1,0 +1,15 @@
+label {
+  color: white;
+  text-shadow: 0px 1px 4px black;
+}
+
+input {
+  border: 1px solid;
+  border-radius: 8px;
+  width: 300px;
+}
+
+.errorMessage {
+  height: 20px;
+  width: auto;
+}

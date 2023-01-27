@@ -1,9 +1,7 @@
 .formSignUp {
   display: flex;
   flex-direction: column;
-  gap: 4px;
   margin-left: 300px;
-  font-size: 20px;
 }
 
 .form_container {
@@ -18,9 +16,8 @@
 
 .form_container p {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: 14px;
-  margin: 0;
 }
 
 .formSignUp button {
@@ -28,16 +25,11 @@
   border-radius: 8px;
   width: 150px;
   align-self: center;
-  margin-top: 14px;
+  margin-top: 4px;
 }
 
 .formSignUp button:hover {
   box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
-}
-
-input {
-  border: 1px solid;
-  border-radius: 8px;
 }
 
 .errorMessage {
