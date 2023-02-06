@@ -8,7 +8,10 @@
   display: flex;
   align-items: center;
   width: auto;
-  background: linear-gradient(rgb(255, 255, 255), rgba(255, 255, 255, 0.1)),
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.089),
+      rgba(255, 255, 255, 0.24)
+    ),
     url(../../../images/dog_1.jpg) no-repeat;
   background-position: left;
   background-size: inherit;

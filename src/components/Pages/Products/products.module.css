@@ -21,5 +21,4 @@
   justify-content: center;
   align-items: baseline;
   grid-template-columns: repeat(4, auto);
-  padding: inherit;
 }

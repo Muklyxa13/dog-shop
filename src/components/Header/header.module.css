@@ -1,8 +1,9 @@
 .wr {
   background: white;
-  box-shadow: 0 0 4px 10px white;
   position: sticky;
   top: 0;
+  box-shadow: 0 0 8px 20px white;
+  z-index: 1;
 }
 
 .headerLink {
@@ -26,18 +27,19 @@
   margin-right: 20px;
 }
 
-.headerUl li {
+.btn {
   border: 2px solid white;
   border-radius: 10px;
   background-color: rgba(17, 28, 51, 0.9);
   padding: 5px;
+  color: white;
 }
 
 .headerUl li:hover {
   box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
 }
 
-.headerUl li a {
+.btn a {
   color: white;
 }
 
@@ -72,4 +74,21 @@
 
 .exitBtn:hover {
   box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
+}
+
+.cart {
+  font-size: 18px;
+  border: 1px solid rgba(17, 28, 51, 0.9);
+  border-radius: 8px;
+  background: transparent;
+  padding: 4px;
+}
+
+.cart a {
+  color: rgba(17, 28, 51, 0.9);
+}
+
+.headerLeft {
+  display: flex;
+  gap: 20px;
 }

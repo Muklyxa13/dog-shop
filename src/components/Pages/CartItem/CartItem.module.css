@@ -1,0 +1,107 @@
+.item {
+  margin-bottom: 20px;
+}
+
+.itemImg {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border: 1px solid white;
+  border-radius: 8px;
+}
+
+.itemBox {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1000px;
+  align-items: center;
+  margin-left: 100px;
+  border: 1px solid white;
+  border-radius: 8px;
+}
+
+.btnContainer {
+  display: flex;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 8px;
+}
+
+.btnContainer > button {
+  margin: 10px;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 24px;
+}
+
+.btnBox {
+  width: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btnBox > p {
+  opacity: 0.7;
+}
+
+.itemInfo {
+  max-width: 400px;
+  margin-left: 20px;
+}
+
+.itemInfo > h5 {
+  max-width: 300px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.itemInfo > p {
+  width: 350px;
+  overflow-y: auto;
+  max-height: 150px;
+}
+
+.itemInfo > p::-webkit-scrollbar {
+  width: 10px;
+}
+
+.itemInfo > p::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
+.itemInfo > p::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.itemInfo > h5 {
+  display: flex;
+  justify-content: center;
+}
+
+.itemPrice {
+  display: grid;
+  justify-items: end;
+  width: 100px;
+  margin-right: 10px;
+  opacity: 0.7;
+}
+
+.itemInput {
+  width: auto;
+  margin-left: 24px;
+  margin-right: 16px;
+  transform: scale(1.8);
+}
+
+.itemDescr {
+  opacity: 0.5;
+}
+
+.itemText {
+  opacity: 0.8;
+}

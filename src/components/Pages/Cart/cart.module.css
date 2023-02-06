@@ -1,0 +1,69 @@
+.cartHeader {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1180px;
+  align-items: center;
+  margin-left: 130px;
+  margin-top: 10px;
+  position: relative;
+}
+
+.cart {
+  background-color: gainsboro;
+}
+
+.cartMenu {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.cartRight {
+  position: sticky;
+  top: 136px;
+  margin-left: 50px;
+  margin-top: 25px;
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 10px;
+  height: 300px;
+  width: 300px;
+}
+
+.btnBox {
+  position: relative;
+}
+
+.btnCart {
+  position: absolute;
+  top: 100px;
+  height: 64px;
+  width: 100%;
+  padding: 15px;
+  background-color: rgba(17, 28, 51, 0.9);
+  color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.btnCart:hover {
+  box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
+}
+
+.hr {
+  color: white;
+  border: 1px solid;
+}
+
+.btnClear {
+  background-color: rgba(17, 28, 51, 0.9);
+  color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 4px;
+  margin-top: 8px;
+}
+
+.btnClear:hover {
+  box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
+}

@@ -59,10 +59,10 @@ class DogFoodApi {
     return res.json()
   }
 
-  async getAllProducts() {
+  async getAllProducts(search) {
     this.checkToken()
 
-    const res = await fetch(`${this.baseUrl}/products`, {
+    const res = await fetch(`${this.baseUrl}/products?query=${search}`, {
       headers: {
         authorization: this.getAuthorizationHandler(),
       },
@@ -85,11 +85,21 @@ class DogFoodApi {
         authorization: this.getAuthorizationHandler(),
       },
     })
-    console.log(res)
+    return res.json()
   }
 
-  async getProductsByIds() {
+  getProductsByIds(ids) {
     this.checkToken()
+
+    return Promise.all(
+      ids.map((id) =>
+        fetch(`${this.baseUrl}/products/${id}`, {
+          headers: {
+            authorization: this.getAuthorizationHandler(),
+          },
+        }).then((res) => res.json())
+      )
+    )
   }
 }
 

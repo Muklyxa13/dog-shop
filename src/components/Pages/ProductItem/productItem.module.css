@@ -9,11 +9,8 @@
 .item {
   display: grid;
   justify-content: center;
-  border: 1px solid;
   border-radius: 10px;
   width: 250px;
-  height: 500px;
-  margin: 4px;
   padding: 10px;
   background-color: rgb(13, 30, 66);
   color: white;
@@ -37,7 +34,7 @@ p {
 }
 
 span {
-  color: yellow;
+  color: white;
 }
 
 .blockBtn {
@@ -45,4 +42,14 @@ span {
   justify-content: center;
   align-items: flex-end;
   gap: 10px;
+}
+
+.nameProduct {
+  text-align: center;
+  color: white;
+  height: 46px;
+}
+
+.itemPrice {
+  color: rgb(0, 255, 34);
 }
