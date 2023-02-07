@@ -23,15 +23,15 @@
 .btnContainer {
   display: flex;
   align-items: center;
-  border: 1px solid white;
+  border: 1px solid rgba(0, 0, 0, 0.425);
   border-radius: 8px;
 }
 
 .btnContainer > button {
   border: none;
   background: transparent;
-  color: white;
-  font-size: auto;
+  color: rgba(0, 0, 0, 0.459);
+  font-size: 20px;
 }
 
 .btnBox {
@@ -116,4 +116,10 @@
 
 .btnTrash:hover {
   color: black;
+}
+
+.countText {
+  color: rgba(0, 0, 0, 0.438);
+  font-size: 20px;
+  margin: 0;
 }

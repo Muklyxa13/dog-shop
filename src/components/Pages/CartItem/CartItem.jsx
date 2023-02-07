@@ -2,11 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons"
 import PropTypes from "prop-types"
 import { useDispatch } from "react-redux"
-import {
-  decrementItem,
-  deleteItem,
-  incrementItem,
-} from "../../../redux/slices/cartSlice"
+import { deleteItem } from "../../../redux/slices/cartSlice"
 import styles from "./CartItem.module.css"
 import {
   deleteCartDetails,
@@ -36,11 +32,11 @@ export const CartItem = ({
     }
   }
 
-  const decrementCount = () => {
-    if (count > 0) {
-      dispath(decrementItem(id))
-    }
-  }
+  // const decrementCount = () => {
+  //   if (count > 0) {
+  //     dispath()
+  //   }
+  // }
 
   return (
     <div className={styles.item}>
@@ -64,11 +60,11 @@ export const CartItem = ({
             <button
               type="button"
               className={styles.itemDecrement}
-              onClick={decrementCount}
+              // onClick={}
             >
               -
             </button>
-            <p>{count}</p>
+            <p className={styles.countText}>{count}</p>
             <button
               type="button"
               className={styles.itemIncrement}

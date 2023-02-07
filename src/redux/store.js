@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit"
-import { REDUX_LS_KEY } from "./constants"
-import { getInitState } from "./initState"
+// import { REDUX_LS_KEY } from "./constants"
+// import { getInitState } from "./initState"
 import { cartReducer } from "./slices/cartSlice"
 import { filterReducer } from "./slices/filterSlice"
 import { productsReducer } from "./slices/productsSlice"
 import { userReducer } from "./slices/userSlice"
-import { dogFoodApi } from "../API/DogFoodApi"
+// import { dogFoodApi } from "../API/DogFoodApi"
 import { cartDetailReducer } from "./slices/cartDetailsSlice"
 
 export const store = configureStore({
