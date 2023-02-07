@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faTrashCan } from "@fortawesome/free-regular-svg-icons"
 import PropTypes from "prop-types"
 import { useDispatch } from "react-redux"
 import {
@@ -6,6 +8,10 @@ import {
   incrementItem,
 } from "../../../redux/slices/cartSlice"
 import styles from "./CartItem.module.css"
+import {
+  deleteCartDetails,
+  increment,
+} from "../../../redux/slices/cartDetailsSlice"
 
 export const CartItem = ({
   id,
@@ -18,16 +24,20 @@ export const CartItem = ({
   count,
 }) => {
   const dispath = useDispatch()
+
   const deleteItemHandler = () => {
     dispath(deleteItem(id))
+    dispath(deleteCartDetails(id))
   }
+
   const incrementCount = () => {
     if (count < stock) {
-      dispath(incrementItem(id))
+      dispath(increment(id))
     }
   }
+
   const decrementCount = () => {
-    if (count >= 0) {
+    if (count > 0) {
       dispath(decrementItem(id))
     }
   }
@@ -42,6 +52,13 @@ export const CartItem = ({
           <p className={styles.itemDescr}>Описание товара:</p>
           <p className={styles.itemText}>{description}</p>
         </div>
+        <button
+          type="button"
+          onClick={deleteItemHandler}
+          className={styles.btnTrash}
+        >
+          <FontAwesomeIcon icon={faTrashCan} />
+        </button>
         <div className={styles.btnBox}>
           <div className={styles.btnContainer}>
             <button
@@ -82,5 +99,5 @@ CartItem.propTypes = {
   price: PropTypes.number,
   stock: PropTypes.number,
   description: PropTypes.string,
-  count: PropTypes.number,
+  count: PropTypes.any,
 }

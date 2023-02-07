@@ -9,6 +9,7 @@ export const initState = {
   },
   products: [],
   cart: [],
+  cartDetails: [],
   filter: {
     search: "",
   },

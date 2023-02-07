@@ -28,11 +28,10 @@
 }
 
 .btnContainer > button {
-  margin: 10px;
   border: none;
   background: transparent;
   color: white;
-  font-size: 24px;
+  font-size: auto;
 }
 
 .btnBox {
@@ -104,4 +103,17 @@
 
 .itemText {
   opacity: 0.8;
+}
+
+.btnTrash {
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.5);
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.btnTrash:hover {
+  color: black;
 }

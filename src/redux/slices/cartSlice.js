@@ -9,7 +9,7 @@ const cartSlice = createSlice({
       state.push(action.payload)
     },
     deleteItem(state, action) {
-      return state.filter((product) => product.id !== action.payload)
+      return state.filter((product) => product !== action.payload)
     },
     clearAllItems() {
       return []
@@ -24,9 +24,6 @@ const cartSlice = createSlice({
         }
         return item
       })
-    },
-    testIncr(state) {
-      return state + 1
     },
     decrementItem(state, action) {
       return state.map((item) => {
@@ -48,8 +45,7 @@ export const {
   clearAllItems,
   incrementItem,
   decrementItem,
-  count,
-  testIncr,
+  cartContainer,
 } = cartSlice.actions
 export const cartReducer = cartSlice.reducer
 export const getCartSelector = (state) => state.cart
