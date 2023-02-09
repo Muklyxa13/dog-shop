@@ -7,10 +7,10 @@ import { DogShopContext } from "../../Contexts/DogShopContextProvider"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons"
 import { useSelector } from "react-redux"
-import { getCartSelector } from "../../redux/slices/cartSlice"
+import { getCartDetailsSelector } from "../../redux/slices/cartDetailsSlice"
 
 export const Header = () => {
-  const productsCart = useSelector(getCartSelector)
+  const productsCart = useSelector(getCartDetailsSelector)
 
   const { removeToken, token } = useContext(DogShopContext)
 
@@ -28,32 +28,30 @@ export const Header = () => {
                 ></img>
               </Link>
               <div className={styles.productsLink}>
-                <li>
-                  <NavLink
-                    className={({ isActive }) =>
-                      classNames({ [styles.activeLink]: isActive })
-                    }
-                    to="/products"
-                  >
-                    Каталог
-                  </NavLink>
-                </li>
+                <NavLink
+                  className={({ isActive }) =>
+                    classNames({ [styles.activeLink]: isActive })
+                  }
+                  to="/products"
+                >
+                  Каталог
+                </NavLink>
               </div>
             </div>
           </li>
-          <div className={styles.headerUl}>
+          <li className={styles.headerUl}>
             {token ? (
-              <li className={styles.cart}>
+              <div className={styles.cart}>
                 <NavLink to="/cart">
                   {productsCart.length}{" "}
                   <FontAwesomeIcon icon={faCartShopping} />
                 </NavLink>
-              </li>
+              </div>
             ) : (
               ""
             )}
             {token ? (
-              <li className={styles.btn}>
+              <div className={styles.btn}>
                 <NavLink
                   className={({ isActive }) =>
                     classNames({ [styles.activeLink]: isActive })
@@ -63,9 +61,9 @@ export const Header = () => {
                 >
                   Выйти
                 </NavLink>
-              </li>
+              </div>
             ) : (
-              <li className={styles.btn}>
+              <div className={styles.btn}>
                 <NavLink
                   className={({ isActive }) =>
                     classNames({ [styles.activeLink]: isActive })
@@ -74,9 +72,9 @@ export const Header = () => {
                 >
                   Войти
                 </NavLink>
-              </li>
+              </div>
             )}
-            <li className={styles.btn}>
+            <div className={styles.btn}>
               <NavLink
                 className={({ isActive }) =>
                   classNames({ [styles.activeLink]: isActive })
@@ -85,8 +83,8 @@ export const Header = () => {
               >
                 Регистрация
               </NavLink>
-            </li>
-          </div>
+            </div>
+          </li>
         </ul>
       </nav>
     </header>

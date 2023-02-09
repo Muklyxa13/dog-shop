@@ -40,11 +40,11 @@ const ProductsInner = ({ data }) => {
   return (
     <>
       <div>
-        <ul className={styles.productsList}>
+        <div className={styles.productsList}>
           {products.map(({ _id: id, ...restProduct }) => (
             <ProductItem {...restProduct} id={id} key={id} />
           ))}
-        </ul>
+        </div>
         <FontAwesomeIcon
           onClick={clickToScrollUp}
           className={classNames("scroll", "scrollUp")}

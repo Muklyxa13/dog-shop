@@ -27,5 +27,5 @@ const userSlice = createSlice({
 
 export const { setUser, removeUser } = userSlice.actions
 export const userReducer = userSlice.reducer
-export const getCartSelector = (state) => state.user
+export const getUserSelector = (state) => state.user
 export const getTokenSelector = (state) => state.user.token

@@ -1,24 +1,19 @@
 import styles from "./productItem.module.css"
 import PropTypes from "prop-types"
 import { useDispatch, useSelector } from "react-redux"
-import { addItem, getCartSelector } from "../../../redux/slices/cartSlice"
+import {
+  addItem,
+  getCartDetailsSelector,
+} from "../../../redux/slices/cartDetailsSlice"
 
-export const ProductItem = ({
-  id,
-  name,
-  pictures,
-  discount,
-  price,
-  stock,
-  description,
-}) => {
+export const ProductItem = ({ id, name, pictures, discount, price, stock }) => {
   const dispath = useDispatch()
 
   const addNewItemToCart = () => {
     dispath(addItem(id))
   }
 
-  const cartDataIds = useSelector(getCartSelector)
+  const cartDataIds = useSelector(getCartDetailsSelector)
   const isExistInCart = cartDataIds.includes(id)
 
   return (
@@ -58,5 +53,4 @@ ProductItem.propTypes = {
   discount: PropTypes.number,
   price: PropTypes.number,
   stock: PropTypes.number,
-  description: PropTypes.string,
 }

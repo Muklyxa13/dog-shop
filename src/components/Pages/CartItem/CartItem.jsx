@@ -1,12 +1,14 @@
+/* eslint-disable no-debugger */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons"
 import PropTypes from "prop-types"
 import { useDispatch } from "react-redux"
-import { deleteItem } from "../../../redux/slices/cartSlice"
 import styles from "./CartItem.module.css"
 import {
+  changeIsChecked,
+  decrementCartDetails,
   deleteCartDetails,
-  increment,
+  incrementCartDetails,
 } from "../../../redux/slices/cartDetailsSlice"
 
 export const CartItem = ({
@@ -18,30 +20,40 @@ export const CartItem = ({
   stock,
   description,
   count,
+  isChecked,
 }) => {
   const dispath = useDispatch()
 
   const deleteItemHandler = () => {
-    dispath(deleteItem(id))
     dispath(deleteCartDetails(id))
   }
 
   const incrementCount = () => {
     if (count < stock) {
-      dispath(increment(id))
+      dispath(incrementCartDetails(id))
     }
   }
 
-  // const decrementCount = () => {
-  //   if (count > 0) {
-  //     dispath()
-  //   }
-  // }
+  const decrementCount = () => {
+    if (count > 1) {
+      dispath(decrementCartDetails(id))
+    }
+  }
+
+  const onSelectProduct = (event) => {
+    dispath(changeIsChecked({ isChecked: event.target.checked, id }))
+  }
+  console.log({ isChecked })
 
   return (
     <div className={styles.item}>
       <div className={styles.itemBox}>
-        <input type="checkbox" className={styles.itemInput} />
+        <input
+          checked={isChecked}
+          type="checkbox"
+          onChange={onSelectProduct}
+          className={styles.itemInput}
+        />
         <img src={pictures} alt="imgItem" className={styles.itemImg} />
         <div className={styles.itemInfo}>
           <h5>&quot;{name}&quot;</h5>
@@ -60,7 +72,7 @@ export const CartItem = ({
             <button
               type="button"
               className={styles.itemDecrement}
-              // onClick={}
+              onClick={decrementCount}
             >
               -
             </button>
@@ -96,4 +108,5 @@ CartItem.propTypes = {
   stock: PropTypes.number,
   description: PropTypes.string,
   count: PropTypes.any,
+  isChecked: PropTypes.bool,
 }

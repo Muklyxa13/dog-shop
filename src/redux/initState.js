@@ -10,6 +10,7 @@ export const initState = {
   products: [],
   cart: [],
   cartDetails: [],
+  selectProduct: [],
   filter: {
     search: "",
   },
