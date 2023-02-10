@@ -80,9 +80,6 @@ const cartDetailsSlice = createSlice({
     selectAllProducts(state, action) {
       state.map((product) => (product.isChecked = action.payload))
     },
-    resetAllProducts(state) {
-      state.map((product) => (product.isChecked = false))
-    },
     removeSelectedProduct(state, action) {
       return state.filter((product) => product.isChecked === false)
     },
@@ -101,7 +98,6 @@ export const {
   decrementCartDetails,
   changeIsChecked,
   selectAllProducts,
-  resetAllProducts,
   removeSelectedProduct,
 } = cartDetailsSlice.actions
 export const cartDetailReducer = cartDetailsSlice.reducer

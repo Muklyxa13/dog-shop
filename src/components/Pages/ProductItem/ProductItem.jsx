@@ -5,11 +5,13 @@ import {
   addItem,
   getCartDetailsSelector,
 } from "../../../redux/slices/cartDetailsSlice"
+import { addItemId } from "../../../redux/slices/cartSlice"
 
 export const ProductItem = ({ id, name, pictures, discount, price, stock }) => {
   const dispath = useDispatch()
 
   const addNewItemToCart = () => {
+    dispath(addItemId(id))
     dispath(addItem(id))
   }
 

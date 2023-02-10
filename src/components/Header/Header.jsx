@@ -2,7 +2,7 @@ import { memo, useContext } from "react"
 import { Link, NavLink } from "react-router-dom"
 import styles from "./header.module.css"
 import classNames from "classnames"
-import logoImg from "../../images/logo.jpg"
+import logoTest from "../../images/logo_test.png"
 import { DogShopContext } from "../../Contexts/DogShopContextProvider"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons"
@@ -23,7 +23,7 @@ export const Header = () => {
               <Link to="/">
                 <img
                   className={styles.logoImg}
-                  src={logoImg}
+                  src={logoTest}
                   alt="логотип"
                 ></img>
               </Link>
