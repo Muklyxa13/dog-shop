@@ -12,8 +12,6 @@ import {
   clearAllCartDetails,
   selectAllProducts,
   removeSelectedProduct,
-  resetAllProducts,
-  test,
 } from "../../../redux/slices/cartDetailsSlice"
 import { useEffect } from "react"
 // import { getCartSelectedSelector } from "../../../redux/slices/cartSelectedSlice"
@@ -59,12 +57,18 @@ export const Cart = () => {
     dispatch(removeSelectedProduct())
   }
 
-  const selectedAllProducts = () => {
-    dispatch(selectAllProducts(true))
+  const selectedAllProducts = (event) => {
+    dispatch(selectAllProducts(event.target.checked))
   }
 
-  const resetSelectedAllProducts = () => {
-    dispatch(resetAllProducts())
+  const countTotalProductInCart = () => {
+    if (selectedProducts.length === 0) return <p>Нет выбранных товаров</p>
+    if (selectedProducts.length === 1)
+      return <p>{selectedProducts.length} товар</p>
+    if (selectedProducts.length > 1 && selectedProducts.length < 5)
+      return <p>{selectedProducts.length} товара</p>
+    if (selectedProducts.length > 4)
+      return <p>{selectedProducts.length} товаров</p>
   }
 
   const { data, isLoading } = useQuery({
@@ -79,21 +83,6 @@ export const Cart = () => {
   }, [dispatch, data])
 
   if (isLoading) return <Loader />
-
-  const noProductMessage = () => {
-    if (selectedProducts.length === 0) return <p>Нет выбранных товаров</p>
-  }
-  const oneProductMessage = () => {
-    if (selectedProducts.length === 1) return <p>1 товар</p>
-  }
-  const someProductMessage = () => {
-    if (selectedProducts.length > 1 && selectedProducts.length < 5)
-      return <p>{selectedProducts.length} товара</p>
-  }
-  const moreProductMessage = () => {
-    if (selectedProducts.length > 4)
-      return <p>{selectedProducts.length} товаров</p>
-  }
 
   return (
     <>
@@ -167,10 +156,7 @@ export const Cart = () => {
               <div className={styles.cartRightBox}>
                 <div className={styles.cartRightSum}>
                   <p>Итого:</p>
-                  {noProductMessage()}
-                  {oneProductMessage()}
-                  {someProductMessage()}
-                  {moreProductMessage()}
+                  {countTotalProductInCart()}
                 </div>
                 <div>
                   <p>Сумма:</p>
