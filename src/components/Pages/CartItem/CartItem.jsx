@@ -88,7 +88,9 @@ export const CartItem = ({
           <p>В наличии: {stock} шт.</p>
         </div>
         <div className={styles.itemPrice}>
-          <h6>{discount > 0 && `${price} ₽`}</h6>
+          <h6>
+            <span>{discount > 0 && `${price}`}</span> ₽
+          </h6>
           <h4>
             {discount > 0 && `${(price * (100 - discount)) / 100} ₽`}
             {discount === 0 && `${price} ₽`}

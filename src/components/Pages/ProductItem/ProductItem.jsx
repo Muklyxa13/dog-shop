@@ -6,6 +6,7 @@ import {
   getCartDetailsSelector,
 } from "../../../redux/slices/cartDetailsSlice"
 import { addItemId } from "../../../redux/slices/cartSlice"
+import sale from "../../../images/sale.png"
 
 export const ProductItem = ({ id, name, pictures, discount, price, stock }) => {
   const dispath = useDispatch()
@@ -20,14 +21,18 @@ export const ProductItem = ({ id, name, pictures, discount, price, stock }) => {
 
   return (
     <div className={styles.item}>
+      {discount > 0 && <img className={styles.sale} src={sale} alt="sale" />}
+      {discount > 0 && <div className={styles.disc}>-{discount}%</div>}
       <h6 className={styles.nameProduct}>{name}</h6>
       <img className={styles.itemImg} src={pictures} alt="product" />
       <div className={styles.itemPrice}>
-        <h6>
-          <span>Цена:</span> {discount >= 0 && `${price} ₽`}
-        </h6>
+        {discount > 0 && (
+          <h6 className={styles.priceOld}>
+            {" "}
+            <span>{discount > 0 && `${price}`}</span> ₽
+          </h6>
+        )}
         <h5>
-          <span>Со скидкой:</span>{" "}
           {discount > 0 && `${(price * (100 - discount)) / 100} ₽`}
           {discount === 0 && `${price} ₽`}
         </h5>

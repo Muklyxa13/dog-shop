@@ -90,6 +90,11 @@
   opacity: 0.7;
 }
 
+.itemPrice > h6 > span {
+  text-decoration: line-through 2px;
+  color: black;
+}
+
 .itemInput {
   width: auto;
   margin-left: 24px;

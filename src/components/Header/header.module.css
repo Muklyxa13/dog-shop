@@ -38,7 +38,7 @@
 }
 
 .btn:hover {
-  box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
 }
 
 .btn a {
@@ -68,7 +68,7 @@
 }
 
 .productsLink:hover {
-  box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
 }
 
 .exitBtn {
@@ -80,7 +80,7 @@
 }
 
 .exitBtn:hover {
-  box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
 }
 
 .cart {
@@ -94,6 +94,10 @@
 
 .cart a {
   color: white;
+}
+
+.cart:hover {
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
 }
 
 .headerLeft {

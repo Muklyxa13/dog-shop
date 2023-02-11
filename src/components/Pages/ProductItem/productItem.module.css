@@ -1,9 +1,11 @@
 .itemImg {
   height: 200px;
   width: 200px;
+  border: 1px solid white;
   border-radius: 10px;
-  box-shadow: 0 0 10px 2px white;
+  box-shadow: 0 0 8px 1px black;
   margin: 15px;
+  padding: 4px;
 }
 
 .item {
@@ -12,8 +14,29 @@
   border-radius: 10px;
   width: 250px;
   padding: 10px;
-  background-color: rgb(13, 30, 66);
+  background-color: rgba(130, 132, 138, 0.671);
   color: white;
+  height: -webkit-fill-available;
+  position: relative;
+  box-shadow: 0 0 8px 1px black;
+}
+
+.disc {
+  border: 1px solid;
+  border-radius: 50%;
+  padding: 4px;
+  position: absolute;
+  bottom: 60px;
+  right: 20px;
+  font-size: 16px;
+}
+
+.sale {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 36px;
+  right: -13px;
 }
 
 .itemButton {
@@ -29,8 +52,7 @@
 
 p {
   margin-bottom: 4px;
-  overflow-y: auto;
-  scroll-behavior: smooth;
+  margin-left: 20px;
 }
 
 span {
@@ -47,9 +69,25 @@ span {
 .nameProduct {
   text-align: center;
   color: white;
-  height: 46px;
+  height: 50px;
+  padding-top: inherit;
+  text-shadow: rgb(0, 0, 0) 1px 0 10px;
 }
 
 .itemPrice {
-  color: rgb(0, 255, 34);
+  color: rgb(0, 0, 0);
+  display: flex;
+  gap: 10px;
+  margin-left: 20px;
+  text-shadow: rgb(255, 255, 255) 1px 0 10px;
+}
+
+.itemPrice > h6 {
+  color: rgba(255, 255, 255, 0.5);
+  text-shadow: rgb(0, 0, 0) 1px 0 10px;
+}
+
+.priceOld > span {
+  text-decoration: line-through black 1px;
+  color: rgba(255, 255, 255, 0.5);
 }
