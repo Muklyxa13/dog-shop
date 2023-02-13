@@ -5,19 +5,14 @@ const userSlice = createSlice({
   name: "user",
   initialState: initState.user,
   reducers: {
-    setUser: {
-      reducer(state, action) {
-        if (state.email !== action.payload.email) return action.payload
-      },
-      prepare(id, token, email) {
-        return {
-          payload: {
-            id,
-            token,
-            email,
-          },
-        }
-      },
+    setUser(state, action) {
+      return {
+        ...state,
+        _id: action.payload.data._id,
+        group: action.payload.data.group,
+        email: action.payload.data.email,
+        token: action.payload.token,
+      }
     },
     removeUser() {
       return initState.user

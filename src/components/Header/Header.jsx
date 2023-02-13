@@ -1,18 +1,21 @@
-import { memo, useContext } from "react"
+import { memo } from "react"
 import { Link, NavLink } from "react-router-dom"
 import styles from "./header.module.css"
 import classNames from "classnames"
 import logoTest from "../../images/logo_test.png"
-import { DogShopContext } from "../../Contexts/DogShopContextProvider"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { getCartDetailsSelector } from "../../redux/slices/cartDetailsSlice"
+import { getTokenSelector, removeUser } from "../../redux/slices/userSlice"
 
 export const Header = () => {
-  const productsCart = useSelector(getCartDetailsSelector)
-
-  const { removeToken, token } = useContext(DogShopContext)
+  const dispatch = useDispatch()
+  const productsCart = useSelector(getCartDetailsSelector) // массив товаров, добавленных корзину
+  const token = useSelector(getTokenSelector)
+  const deleteUser = () => {
+    dispatch(removeUser()) // удаляем пользователя, при нажатии на "Выйти"
+  }
 
   return (
     <header className={styles.wr}>
@@ -57,7 +60,7 @@ export const Header = () => {
                     classNames({ [styles.activeLink]: isActive })
                   }
                   to="/signin"
-                  onClick={removeToken}
+                  onClick={deleteUser}
                 >
                   Выйти
                 </NavLink>

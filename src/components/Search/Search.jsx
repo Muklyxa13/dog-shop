@@ -6,16 +6,12 @@ import { useDebounce } from "../hooks/useDebounce"
 
 export const Search = () => {
   const [search, setSearch] = useState("")
-
   const dispatch = useDispatch()
-
   const debouncedSearchValue = useDebounce(search)
-
   const changeSearchHandler = (e) => {
     const newSearchValue = e.target.value
     setSearch(newSearchValue)
   }
-
   useEffect(() => {
     dispatch(changeSearchFilter(debouncedSearchValue))
   }, [debouncedSearchValue, dispatch])

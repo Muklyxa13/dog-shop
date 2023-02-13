@@ -2,22 +2,16 @@ import styles from "./productItem.module.css"
 import PropTypes from "prop-types"
 import { useDispatch, useSelector } from "react-redux"
 import {
-  addItem,
+  addCartDetails,
   getCartDetailsSelector,
 } from "../../../redux/slices/cartDetailsSlice"
-import { addItemId } from "../../../redux/slices/cartSlice"
 import sale from "../../../images/sale.png"
 
 export const ProductItem = ({ id, name, pictures, discount, price, stock }) => {
   const dispath = useDispatch()
-
-  const addNewItemToCart = () => {
-    dispath(addItemId(id))
-    dispath(addItem(id))
-  }
-
   const cartDataIds = useSelector(getCartDetailsSelector)
-  const isExistInCart = cartDataIds.includes(id)
+  const isExistInCart = cartDataIds.map(({ id }) => id).includes(id) // проверка на добавление товара в корзину (деструктуризируем объект и сразу получаем id)
+  const addNewItemToCart = () => dispath(addCartDetails(id)) // добавление товара в корзину
 
   return (
     <div className={styles.item}>
@@ -44,6 +38,7 @@ export const ProductItem = ({ id, name, pictures, discount, price, stock }) => {
         <button
           className={styles.itemButton}
           onClick={() => !isExistInCart && addNewItemToCart()}
+          disabled={isExistInCart}
         >
           {isExistInCart ? "В корзине" : "В корзину"}
         </button>

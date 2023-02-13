@@ -1,14 +1,15 @@
 import { useMutation } from "@tanstack/react-query"
 import { Form, Formik } from "formik"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Loader } from "../../Loader/Loader"
 import { createSignInFormValidationScheme } from "./validator"
 import styles from "./signIn.module.css"
-import { useContext } from "react"
-import { DogShopContext } from "../../../Contexts/DogShopContextProvider"
 import { dogFoodApi } from "../../../API/DogFoodApi"
 import { PasswordInput } from "../../PasswordInput/PasswordInput"
 import { EmailInput } from "../../EmailInput/EmailInput"
+import { useDispatch } from "react-redux"
+import { setUser } from "../../../redux/slices/userSlice"
+import back from "../../../images/back.jpg"
 
 const initialLoginValues = {
   email: "",
@@ -17,24 +18,32 @@ const initialLoginValues = {
 
 export const SignIn = () => {
   const navigate = useNavigate()
-
-  const { setToken } = useContext(DogShopContext)
-
+  const dispatch = useDispatch()
   const { mutateAsync, isLoading, isError, error } = useMutation({
     mutationFn: (values) =>
       dogFoodApi.signIn(values).then((data) => {
-        setToken(data.token)
+        dispatch(setUser(data))
       }),
   })
-
   const submitHandler = async (values) => {
     await mutateAsync(values)
     setTimeout(() => {
       navigate(`/products`)
     }, 0)
   }
-
-  if (isError) return <p className={styles.error}>{error.message}</p>
+  if (isError) {
+    return (
+      <div className={styles.errorMessage}>
+        <img src={back} alt="back" />
+        <div className={styles.error}>
+          <p>{error.message}</p>
+          <Link className={styles.errorBtn} to="/">
+            На главную
+          </Link>
+        </div>
+      </div>
+    )
+  }
   if (isLoading) return <Loader />
 
   return (

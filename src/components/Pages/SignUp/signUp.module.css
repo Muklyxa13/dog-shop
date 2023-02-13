@@ -40,7 +40,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  position: relative;
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 300px;
+}
+
+.errorMessage > img {
+  position: absolute;
+  bottom: -10px;
 }
 
 .errorBtn {

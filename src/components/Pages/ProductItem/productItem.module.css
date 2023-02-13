@@ -44,10 +44,16 @@
   height: 30px;
   width: auto;
   margin-top: 10px;
+  border: none;
 }
 
 .itemButton:hover {
-  box-shadow: 0 0 6px 0 white;
+  box-shadow: 0 0 6px 0 rgb(0, 0, 0);
+}
+
+.itemButton:disabled {
+  color: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 p {

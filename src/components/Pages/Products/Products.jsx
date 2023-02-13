@@ -1,9 +1,8 @@
 /* eslint-disable no-debugger */
 import { useQuery } from "@tanstack/react-query"
-import { useEffect, useContext } from "react"
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { dogFoodApi } from "../../../API/DogFoodApi"
-import { DogShopContext } from "../../../Contexts/DogShopContextProvider"
 import { ProductItem } from "../ProductItem/ProductItem"
 import styles from "./products.module.css"
 import "./scroll.scss"
@@ -12,36 +11,20 @@ import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { withQuery } from "../../HOCs/withQuery"
 import PropTypes from "prop-types"
-import { useDispatch, useSelector } from "react-redux"
-import { setProducts } from "../../../redux/slices/productsSlice"
-import { getAllProductsSelector } from "../../../redux/slices/productsSlice"
+import { useSelector } from "react-redux"
 import { getQueryKey } from "./utils"
 import { getSearchSelector } from "../../../redux/slices/filterSlice"
-import isEqual from "lodash.isequal"
+import { getTokenSelector } from "../../../redux/slices/userSlice"
 
 const ProductsInner = ({ data }) => {
-  const dispatch = useDispatch()
-  const products = useSelector(getAllProductsSelector)
-
-  const clickToScrollUp = () => {
-    window.scrollTo(0, 0)
-  }
-
-  const clickToScrollDown = () => {
-    window.scrollTo(0, document.body.scrollHeight)
-  }
-
-  useEffect(() => {
-    if (!isEqual(data.products, products)) {
-      dispatch(setProducts(data.products))
-    }
-  }, [dispatch, data, products])
+  const clickToScrollUp = () => window.scrollTo(0, 0) // скрол вверх
+  const clickToScrollDown = () => window.scrollTo(0, document.body.scrollHeight) // скрол вниз
 
   return (
     <>
       <div>
         <div className={styles.productsList}>
-          {products.map(({ _id: id, ...restProduct }) => (
+          {data.products.map(({ _id: id, ...restProduct }) => (
             <ProductItem {...restProduct} id={id} key={id} />
           ))}
         </div>
@@ -66,12 +49,12 @@ ProductsInner.propTypes = {
   }),
 }
 
-const ProductsInnerWithQuery = withQuery(ProductsInner)
+const ProductsInnerWithQuery = withQuery(ProductsInner) // HOC
 
 export const Products = () => {
-  const { token } = useContext(DogShopContext)
   const navigate = useNavigate()
   const search = useSelector(getSearchSelector)
+  const token = useSelector(getTokenSelector)
 
   useEffect(() => {
     if (!token) {
@@ -82,8 +65,7 @@ export const Products = () => {
 
   const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: getQueryKey(search),
-    queryFn: () => dogFoodApi.getAllProducts(search),
-    enabled: token !== undefined,
+    queryFn: () => dogFoodApi.getAllProducts(search, token),
   })
 
   return (

@@ -6,47 +6,23 @@ const cartDetailsSlice = createSlice({
   name: "cartDetails",
   initialState: initState.cartDetails,
   reducers: {
-    addItem(state, action) {
-      state.push(action.payload)
-    },
-    addProductToCart: {
-      reducer(state, action) {
-        state.push(action.payload)
-      },
-      prepare(payload) {
-        return {
-          payload: {
-            payload,
-          },
-        }
-      },
-    },
-    setCartDetails(state, action) {
-      state = action.payload
-      return state.map((el) => {
-        return {
-          ...el,
-          count: 1,
-          isChecked: false,
-        }
-      })
-    },
     addCartDetails(state, action) {
       const product = {
         id: action.payload,
         count: 1,
+        isChecked: false,
       }
       state.push(product)
     },
     deleteCartDetails(state, action) {
-      return state.filter((product) => product._id !== action.payload)
+      return state.filter((product) => product.id !== action.payload)
     },
     clearAllCartDetails() {
       return []
     },
     incrementCartDetails(state, action) {
       return state.map((el) => {
-        if (el._id === action.payload) {
+        if (el.id === action.payload) {
           return {
             ...el,
             count: el.count + 1,
@@ -57,7 +33,7 @@ const cartDetailsSlice = createSlice({
     },
     decrementCartDetails(state, action) {
       return state.map((el) => {
-        if (el._id === action.payload) {
+        if (el.id === action.payload) {
           return {
             ...el,
             count: el.count - 1,
@@ -68,7 +44,7 @@ const cartDetailsSlice = createSlice({
     },
     changeIsChecked(state, action) {
       return state.map((product) => {
-        if (product._id === action.payload.id) {
+        if (product.id === action.payload.id) {
           return {
             ...product,
             isChecked: action.payload.isChecked,
@@ -87,10 +63,6 @@ const cartDetailsSlice = createSlice({
 })
 
 export const {
-  test,
-  addItem,
-  addProductToCart,
-  setCartDetails,
   addCartDetails,
   deleteCartDetails,
   clearAllCartDetails,

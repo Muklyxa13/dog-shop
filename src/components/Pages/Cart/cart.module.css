@@ -74,6 +74,21 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
+  position: relative;
+}
+
+.dogLeft {
+  position: absolute;
+  height: 500px;
+  left: 100px;
+  bottom: -24px;
+}
+
+.dogRight {
+  position: absolute;
+  height: 500px;
+  right: 100px;
+  bottom: -24px;
 }
 
 .cartHeaderTwo {
@@ -113,4 +128,16 @@
 .cartRightBox {
   display: flex;
   justify-content: space-between;
+}
+
+.totalPriceBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.totalPrice {
+  font-size: 24px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.5);
 }

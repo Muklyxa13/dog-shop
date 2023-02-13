@@ -2,12 +2,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons"
 import PropTypes from "prop-types"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import styles from "./CartItem.module.css"
 import {
   changeIsChecked,
   decrementCartDetails,
   deleteCartDetails,
+  getCartDetailsSelector,
   incrementCartDetails,
 } from "../../../redux/slices/cartDetailsSlice"
 
@@ -19,37 +20,37 @@ export const CartItem = ({
   price,
   stock,
   description,
-  count,
-  isChecked,
 }) => {
   const dispath = useDispatch()
-
-  const deleteItemHandler = () => {
-    dispath(deleteCartDetails(id))
+  const productInCart = useSelector(getCartDetailsSelector) // массив товаров в корзине (id count check)
+  const currentProduct = productInCart.find((product) => product.id === id) // каждый продукт по отдельности (id)
+  if (!currentProduct) {
+    return null
   }
 
+  const deleteItemHandler = () => dispath(deleteCartDetails(id)) // удаление товара по клику на иконку корзины
   const incrementCount = () => {
-    if (count < stock) {
+    if (currentProduct.count < stock) {
       dispath(incrementCartDetails(id))
     }
+    // уменьшение кол-ва товара
   }
-
   const decrementCount = () => {
-    if (count > 1) {
+    if (currentProduct.count > 1) {
       dispath(decrementCartDetails(id))
     }
+    // увеличение кол-ва товара
   }
-
   const onSelectProduct = (event) => {
     dispath(changeIsChecked({ isChecked: event.target.checked, id }))
+    // один выбранный товар
   }
-  console.log({ isChecked })
 
   return (
     <div className={styles.item}>
       <div className={styles.itemBox}>
         <input
-          checked={isChecked}
+          checked={currentProduct.isChecked}
           type="checkbox"
           onChange={onSelectProduct}
           className={styles.itemInput}
@@ -76,7 +77,7 @@ export const CartItem = ({
             >
               -
             </button>
-            <p className={styles.countText}>{count}</p>
+            <p className={styles.countText}>{currentProduct.count}</p>
             <button
               type="button"
               className={styles.itemIncrement}
@@ -89,7 +90,7 @@ export const CartItem = ({
         </div>
         <div className={styles.itemPrice}>
           <h6>
-            <span>{discount > 0 && `${price}`}</span> ₽
+            <span>{discount > 0 && `${price} ₽`}</span>
           </h6>
           <h4>
             {discount > 0 && `${(price * (100 - discount)) / 100} ₽`}

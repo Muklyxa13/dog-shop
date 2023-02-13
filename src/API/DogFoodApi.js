@@ -27,15 +27,19 @@ class DogFoodApi {
     })
 
     if (res.status === 401) {
-      throw new Error("Неверные логин или пароль")
+      throw new Error(`Ошибка ${res.status}: Неправильные почта или пароль`)
     }
 
     if (res.status === 404) {
-      throw new Error("Пользователь с указанным email не найден")
+      throw new Error(
+        `Ошибка ${res.status}: Пользователь с указанным email не найден`
+      )
     }
 
     if (res.status >= 300) {
-      throw new Error(`Ошибка, код ${res.status}`)
+      throw new Error(
+        `Ошибка ${res.status}: Поле "email" должно быть валидным email-адресом`
+      )
     }
 
     return res.json()
@@ -59,12 +63,10 @@ class DogFoodApi {
     return res.json()
   }
 
-  async getAllProducts(search) {
-    this.checkToken()
-
+  async getAllProducts(search, token) {
     const res = await fetch(`${this.baseUrl}/products?query=${search}`, {
       headers: {
-        authorization: this.getAuthorizationHandler(),
+        authorization: `Bearer ${token}`,
       },
     })
 
@@ -88,14 +90,12 @@ class DogFoodApi {
     return res.json()
   }
 
-  getProductsByIds(ids) {
-    this.checkToken()
-
+  getProductsByIds(ids, token) {
     return Promise.all(
       ids.map((id) =>
         fetch(`${this.baseUrl}/products/${id}`, {
           headers: {
-            authorization: this.getAuthorizationHandler(),
+            authorization: `Bearer ${token}`,
           },
         }).then((res) => res.json())
       )

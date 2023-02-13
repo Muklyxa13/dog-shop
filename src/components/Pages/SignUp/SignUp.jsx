@@ -8,6 +8,7 @@ import { dogFoodApi } from "../../../API/DogFoodApi"
 import { PasswordInput } from "../../PasswordInput/PasswordInput"
 import { EmailInput } from "../../EmailInput/EmailInput"
 import { GroupInput } from "../../GroupInput/GroupInput"
+import back from "../../../images/back.jpg"
 
 const initialRegisterValues = {
   email: "",
@@ -17,24 +18,23 @@ const initialRegisterValues = {
 
 export const SignUp = () => {
   const navigate = useNavigate()
-
   const { mutateAsync, isLoading, isError, error } = useMutation({
     mutationFn: (values) => dogFoodApi.signUp(values),
   })
-
   const submitHandler = async (values) => {
     await mutateAsync(values)
-
     navigate("/signin")
   }
-
   if (isError) {
     return (
       <div className={styles.errorMessage}>
-        <p className={styles.error}>{error.message}</p>
-        <Link className={styles.errorBtn} to="/">
-          На главную
-        </Link>
+        <img src={back} alt="back" />
+        <div className={styles.error}>
+          <p>{error.message}</p>
+          <Link className={styles.errorBtn} to="/">
+            На главную
+          </Link>
+        </div>
       </div>
     )
   }

@@ -1,12 +1,16 @@
 /* eslint-disable no-debugger */
+/*
+изначально сохранял все продукты с бэка в редаксе.
+понял что так не надо было делать, исправил.
+слайс пока что оставил, мало ли...
+*/
 import { createSlice } from "@reduxjs/toolkit"
 import { initState } from "../initState"
 
 const productsSlice = createSlice({
   name: "products",
-  initialState: initState.products, // состояние по умолчанию
+  initialState: initState.products,
   reducers: {
-    // ключ (объект), описываем действия, которые будут происходить в данном срезе
     setProducts(state, action) {
       state = action.payload
       return state

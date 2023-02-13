@@ -13,3 +13,7 @@ input {
   height: 20px;
   width: auto;
 }
+
+.errorMessage > p {
+  color: salmon;
+}

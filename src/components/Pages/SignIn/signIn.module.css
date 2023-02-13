@@ -35,8 +35,36 @@
   box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
 }
 
-.error {
+.errorMessage {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 300px;
+}
+
+.errorMessage > img {
+  position: absolute;
+  bottom: -10px;
+}
+
+.errorBtn {
+  border: 1px solid black;
+  border-radius: 8px;
+  width: auto;
+  align-self: center;
+  margin-top: 14px;
+  padding: 4px;
+  color: black;
+}
+
+.errorBtn:hover {
+  box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
 }

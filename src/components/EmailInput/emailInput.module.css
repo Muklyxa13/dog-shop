@@ -4,7 +4,7 @@ label {
 }
 
 input {
-  border: 1px solid;
+  /* border: 1px solid; */
   border-radius: 8px;
   width: 300px;
 }
@@ -12,4 +12,8 @@ input {
 .errorMessage {
   height: 20px;
   width: auto;
+}
+
+.errorMessage > p {
+  color: salmon;
 }

@@ -23,15 +23,24 @@
 .btnContainer {
   display: flex;
   align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.425);
+  border: 2px solid rgba(0, 0, 0, 0.425);
   border-radius: 8px;
+}
+
+.btnContainer > p {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .btnContainer > button {
   border: none;
   background: transparent;
-  color: rgba(0, 0, 0, 0.459);
-  font-size: 20px;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 26px;
+}
+
+.btnContainer > button:hover {
+  color: rgb(0, 0, 0);
 }
 
 .btnBox {
