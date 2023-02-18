@@ -17,13 +17,15 @@ export const Search = () => {
   }, [debouncedSearchValue, dispatch])
 
   return (
-    <div className={styles.searchContainer}>
-      <input
-        className={styles.search}
-        placeholder="Поиск по товарам"
-        value={search}
-        onChange={changeSearchHandler}
-      />
-    </div>
+    <>
+      <div className={styles.searchContainer}>
+        <input
+          className={styles.search}
+          placeholder="Поиск по товарам"
+          value={search}
+          onChange={changeSearchHandler}
+        />
+      </div>
+    </>
   )
 }

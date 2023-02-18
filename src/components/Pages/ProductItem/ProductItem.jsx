@@ -6,19 +6,38 @@ import {
   getCartDetailsSelector,
 } from "../../../redux/slices/cartDetailsSlice"
 import sale from "../../../images/sale.png"
+import { useNavigate } from "react-router-dom"
+import {
+  addFavorite,
+  getFavoriteSelector,
+} from "../../../redux/slices/favoriteSlice"
 
 export const ProductItem = ({ id, name, pictures, discount, price, stock }) => {
+  const navigate = useNavigate()
   const dispath = useDispatch()
   const cartDataIds = useSelector(getCartDetailsSelector)
+  const favoritePage = useSelector(getFavoriteSelector)
   const isExistInCart = cartDataIds.map(({ id }) => id).includes(id) // проверка на добавление товара в корзину (деструктуризируем объект и сразу получаем id)
+  const isExistInFavorite = favoritePage.map(({ id }) => id).includes(id) // проверка на добавление товара в избранное (деструктуризируем объект и сразу получаем id)
   const addNewItemToCart = () => dispath(addCartDetails(id)) // добавление товара в корзину
+  const addProductFavorite = () => dispath(addFavorite(id)) // добавление товара в избранное
+  const navigateToDetailPage = () => {
+    navigate(`/detail`)
+  }
 
   return (
     <div className={styles.item}>
       {discount > 0 && <img className={styles.sale} src={sale} alt="sale" />}
       {discount > 0 && <div className={styles.disc}>-{discount}%</div>}
-      <h6 className={styles.nameProduct}>{name}</h6>
-      <img className={styles.itemImg} src={pictures} alt="product" />
+      <h6 className={styles.nameProduct} onClick={navigateToDetailPage}>
+        {name}
+      </h6>
+      <img
+        className={styles.itemImg}
+        src={pictures}
+        alt="product"
+        onClick={navigateToDetailPage}
+      />
       <div className={styles.itemPrice}>
         {discount > 0 && (
           <h6 className={styles.priceOld}>
@@ -42,7 +61,13 @@ export const ProductItem = ({ id, name, pictures, discount, price, stock }) => {
         >
           {isExistInCart ? "В корзине" : "В корзину"}
         </button>
-        <button className={styles.itemButton}>В избранное</button>
+        <button
+          className={styles.itemButton}
+          onClick={() => !isExistInFavorite && addProductFavorite()}
+          disabled={isExistInFavorite}
+        >
+          {isExistInFavorite ? "В избранном" : "В избранное"}
+        </button>
       </div>
     </div>
   )

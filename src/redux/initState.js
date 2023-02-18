@@ -10,6 +10,8 @@ export const initState = {
   filter: {
     search: "",
   },
+  detail: [],
+  favorite: [],
 }
 
 export const getInitState = () => {

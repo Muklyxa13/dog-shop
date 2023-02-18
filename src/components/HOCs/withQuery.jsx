@@ -7,7 +7,7 @@ import styles from "./withQuery.module.css"
 
 export const withQuery =
   (WrappedComponent) =>
-  ({ isLoading, isError, error, refetch, ...rest }) => {
+  ({ isLoading, isError, error, refetch, isFetching, ...rest }) => {
     if (isError) {
       return (
         <div className={styles.error}>
@@ -21,7 +21,12 @@ export const withQuery =
 
     if (isLoading) return <Loader />
 
-    return <WrappedComponent {...rest} />
+    return (
+      <>
+        {isFetching && <Loader />}
+        <WrappedComponent {...rest} />
+      </>
+    )
   }
 
 withQuery.propTypes = {

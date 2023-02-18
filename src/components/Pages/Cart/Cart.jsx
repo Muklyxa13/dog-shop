@@ -28,6 +28,7 @@ export const Cart = () => {
     // {data} - массив товаров (фулл)
     queryKey: ["cart", cartDetails.length],
     queryFn: () => dogFoodApi.getProductsByIds(ids, token),
+    keepPreviousData: true,
   })
   if (isLoading) return <Loader />
 

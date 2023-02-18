@@ -5,13 +5,16 @@ import classNames from "classnames"
 import logoTest from "../../images/logo_test.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons"
+import { faHeart } from "@fortawesome/free-regular-svg-icons"
 import { useDispatch, useSelector } from "react-redux"
 import { getCartDetailsSelector } from "../../redux/slices/cartDetailsSlice"
 import { getTokenSelector, removeUser } from "../../redux/slices/userSlice"
+import { getFavoriteSelector } from "../../redux/slices/favoriteSlice"
 
 export const Header = () => {
   const dispatch = useDispatch()
   const productsCart = useSelector(getCartDetailsSelector) // массив товаров, добавленных корзину
+  const productsFavorite = useSelector(getFavoriteSelector)
   const token = useSelector(getTokenSelector)
   const deleteUser = () => {
     dispatch(removeUser()) // удаляем пользователя, при нажатии на "Выйти"
@@ -44,12 +47,19 @@ export const Header = () => {
           </li>
           <li className={styles.headerUl}>
             {token ? (
-              <div className={styles.cart}>
-                <NavLink to="/cart">
-                  {productsCart.length}{" "}
-                  <FontAwesomeIcon icon={faCartShopping} />
-                </NavLink>
-              </div>
+              <>
+                <div className={styles.cart}>
+                  <NavLink to="/favorite">
+                    {productsFavorite.length} <FontAwesomeIcon icon={faHeart} />
+                  </NavLink>
+                </div>
+                <div className={styles.cart}>
+                  <NavLink to="/cart">
+                    {productsCart.length}{" "}
+                    <FontAwesomeIcon icon={faCartShopping} />
+                  </NavLink>
+                </div>
+              </>
             ) : (
               ""
             )}

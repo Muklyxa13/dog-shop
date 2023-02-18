@@ -63,9 +63,10 @@ export const Products = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token])
 
-  const { data, isLoading, isError, error, refetch } = useQuery({
+  const { data, isLoading, isError, error, refetch, isFetching } = useQuery({
     queryKey: getQueryKey(search),
     queryFn: () => dogFoodApi.getAllProducts(search, token),
+    keepPreviousData: true,
   })
 
   return (
@@ -73,6 +74,7 @@ export const Products = () => {
       data={data}
       isLoading={isLoading}
       isError={isError}
+      isFetching={isFetching}
       error={error}
       refetch={refetch}
     />

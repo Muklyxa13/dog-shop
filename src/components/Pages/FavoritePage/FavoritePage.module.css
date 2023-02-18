@@ -1,0 +1,44 @@
+.favoritePage {
+  display: flex;
+  justify-content: center;
+  background-color: gainsboro;
+  position: relative;
+}
+
+.favoriteHeader {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1180px;
+  align-items: center;
+  margin-left: 130px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.btnToCart {
+  padding: 15px;
+  background-color: rgba(17, 28, 51, 0.9);
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  position: sticky;
+  top: 146px;
+  margin-left: 40px;
+}
+
+.btnToCart:hover {
+  box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
+}
+
+.btnClear {
+  background-color: rgba(17, 28, 51, 0.9);
+  color: white;
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 4px;
+  margin-top: 8px;
+}
+
+.btnClear:hover {
+  box-shadow: 0 0 4px 1px rgba(17, 28, 51, 0.9);
+}
