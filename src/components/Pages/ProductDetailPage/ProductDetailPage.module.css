@@ -1,0 +1,113 @@
+.wr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.img {
+  width: 500px;
+  height: 500px;
+  margin-bottom: 30px;
+  border: 1px solid white;
+  border-radius: 10px;
+  box-shadow: 0 0 30px 4px black;
+  padding: 14px;
+}
+
+.infoBox {
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.infoTitle {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.info > span {
+  color: black;
+  font-weight: 500;
+}
+
+.id {
+  font-style: italic;
+  font-weight: 100;
+  opacity: 0.5;
+  margin-bottom: 40px;
+}
+
+.priceAndBtn {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: flex;
+  gap: 20px;
+}
+
+.btn > button {
+  cursor: pointer;
+}
+
+.priceBox {
+  display: flex;
+}
+
+.price {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.discount {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+span {
+  color: black;
+  font-weight: 500;
+}
+
+.description {
+  max-width: 500px;
+  max-height: 500px;
+}
+
+.title {
+  min-width: 500px;
+  max-width: 500px;
+}
+
+.commentsBox {
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.test {
+  display: flex;
+  justify-content: center;
+}
+
+.commentsInput {
+  width: 700px;
+  height: 100px;
+}
+
+.formComment {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.star * {
+  color: gold;
+}
+
+.star *:hover {
+  color: chocolate;
+}

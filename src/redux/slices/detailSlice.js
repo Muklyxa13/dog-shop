@@ -6,7 +6,8 @@ const detailSlice = createSlice({
   initialState: initState.detail,
   reducers: {
     setDetailProduct(state, action) {
-      state.push(action.payload)
+      state = action.payload
+      return state
     },
   },
 })

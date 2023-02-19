@@ -99,6 +99,18 @@ class DogFoodApi {
       )
     )
   }
+
+  async setCommentById(productId, values, token) {
+    const res = await fetch(`${this.baseUrl}/products/review/${productId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(values),
+    })
+    return res.json()
+  }
 }
 
 export const dogFoodApi = new DogFoodApi({
