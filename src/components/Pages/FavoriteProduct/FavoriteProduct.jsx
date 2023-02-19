@@ -7,6 +7,10 @@ import styles from "./FavoriteProduct.module.css"
 import PropTypes from "prop-types"
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+  addCartDetails,
+  getCartDetailsSelector,
+} from "../../../redux/slices/cartDetailsSlice"
 
 export const FavoriteProduct = ({
   id,
@@ -18,6 +22,7 @@ export const FavoriteProduct = ({
   description,
 }) => {
   const dispath = useDispatch()
+  const cartDataIds = useSelector(getCartDetailsSelector) // массив id товаров в корзине
   const productInFavorite = useSelector(getFavoriteSelector) // массив товаров в избранном (id count check)
   const currentProduct = productInFavorite.find((product) => product.id === id) // каждый продукт по отдельности (id)
   if (!currentProduct) {
@@ -25,6 +30,8 @@ export const FavoriteProduct = ({
   }
 
   const deleteItemHandler = () => dispath(deleteFavorite(id)) // удаление товара по клику на иконку корзины
+  const addItemToCart = () => dispath(addCartDetails(id)) // добавление товара в корзину
+  const isExistInCart = cartDataIds.map(({ id }) => id).includes(id) // проверка на наличие товара в корзине
 
   return (
     <div className={styles.item}>
@@ -43,12 +50,15 @@ export const FavoriteProduct = ({
           <FontAwesomeIcon icon={faTrashCan} />
         </button>
         <div className={styles.btnBox}>
-          <div className={styles.btnContainer}>
-            <button type="button" className={styles.itemDecrement}>
-              В корзину
-            </button>
-          </div>
-          <p>В наличии: {stock} шт.</p>
+          <button
+            type="button"
+            className={styles.btnCart}
+            onClick={() => !isExistInCart && addItemToCart()}
+            disabled={isExistInCart}
+          >
+            {isExistInCart ? "В корзине" : "В корзину"}
+          </button>
+          <p className={styles.textCart}>В наличии: {stock} шт.</p>
         </div>
         <div className={styles.itemPrice}>
           <h6>

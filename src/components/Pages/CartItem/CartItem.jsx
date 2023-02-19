@@ -86,7 +86,7 @@ export const CartItem = ({
               +
             </button>
           </div>
-          <p>В наличии: {stock} шт.</p>
+          <p className={styles.textCart}>В наличии: {stock} шт.</p>
         </div>
         <div className={styles.itemPrice}>
           <h6>
