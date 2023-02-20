@@ -3,6 +3,7 @@ import styles from "./search.module.css"
 import { useDispatch } from "react-redux"
 import { changeSearchFilter } from "../../redux/slices/filterSlice"
 import { useDebounce } from "../hooks/useDebounce"
+import { Sort } from "../Sort/Sort"
 
 export const Search = () => {
   const [search, setSearch] = useState("")
@@ -18,13 +19,17 @@ export const Search = () => {
 
   return (
     <>
-      <div className={styles.searchContainer}>
-        <input
-          className={styles.search}
-          placeholder="Поиск по товарам"
-          value={search}
-          onChange={changeSearchHandler}
-        />
+      <div className={styles.wr}>
+        <div className={styles.search}>
+          <label htmlFor="search">Поиск товаров:</label>
+          <input
+            id="search"
+            // className={styles.search}
+            placeholder="Поиск по товарам"
+            value={search}
+            onChange={changeSearchHandler}
+          />
+        </div>
       </div>
     </>
   )

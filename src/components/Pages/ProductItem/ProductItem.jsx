@@ -50,7 +50,7 @@ export const ProductItem = ({ id, name, pictures, discount, price, stock }) => {
             {discount === 0 && `${price} ₽`}
           </h5>
         </div>
-        <p>
+        <p className={styles.text}>
           <span>Осталось:</span> {stock} шт.
         </p>
         <div className={styles.blockBtn}>

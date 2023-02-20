@@ -24,3 +24,37 @@
   margin-bottom: 26px;
   margin-top: 14px;
 }
+
+.btnSortContainer {
+  display: flex;
+  border-radius: 6px;
+  box-shadow: 0px 0px 4px 8px white;
+  background-color: white;
+  height: 28px;
+  gap: 14px;
+}
+
+.btnPrice {
+  display: flex;
+  gap: 6px;
+}
+
+.btnDiscount {
+  display: flex;
+  gap: 6px;
+}
+
+.btnName {
+  display: flex;
+  gap: 6px;
+}
+
+.btnSortWr {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: sticky;
+  top: 78px;
+  z-index: 1;
+  height: max-content;
+}

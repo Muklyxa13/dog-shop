@@ -15,8 +15,8 @@ import {
   addFavorite,
   getFavoriteSelector,
 } from "../../../redux/slices/favoriteSlice"
-import { Comments } from "../../Comments/Comments"
 import { ReactComponent as Star } from "../../../images/star_painted.svg"
+import { SendComment } from "../../SendComment/SendComment"
 
 export const ProductDetailPage = () => {
   const { productId } = useParams()
@@ -63,9 +63,6 @@ export const ProductDetailPage = () => {
         <div className={styles.right}>
           <h3 className={styles.title}>&laquo;{data.name}&raquo;</h3>
           <p className={styles.id}>Артикул: {data._id}</p>
-          {/* {data.reviews.map((el) => (
-          <p>{el.text}</p>
-        ))} */}
           <div className={styles.priceAndBtn}>
             <div className={styles.priceBox}>
               <p className={styles.discount}>
@@ -108,12 +105,7 @@ export const ProductDetailPage = () => {
       </div>
       <div className={styles.test}>
         <div className={styles.commentsBox}>
-          <p>Напишите отзыв:</p>
-          {/* <Form className={styles.formComment}>
-            <input className={styles.commentsInput} type="text" />
-            <button type="submit">Отправить</button>
-          </Form> */}
-          <Comments />
+          <SendComment />
           <div>
             <p>Отзывы о товаре:</p>
             {data.reviews.map((el) => (

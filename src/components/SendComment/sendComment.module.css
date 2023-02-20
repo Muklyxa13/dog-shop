@@ -1,0 +1,25 @@
+.textarea {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 700px;
+  min-height: 80px;
+  max-height: 300px;
+}
+
+.btn {
+  background-color: rgba(17, 28, 51, 0.9);
+  color: white;
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 4px;
+  margin-top: 8px;
+}
+
+.btn:hover {
+  box-shadow: 0 0 4px 1px rgba(17, 28, 51, 0.9);
+}
+
+.wr {
+  display: grid;
+  justify-items: center;
+}

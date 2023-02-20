@@ -1,6 +1,6 @@
 /* eslint-disable no-debugger */
 import { useQuery } from "@tanstack/react-query"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { dogFoodApi } from "../../../API/DogFoodApi"
 import { ProductItem } from "../ProductItem/ProductItem"
@@ -17,14 +17,107 @@ import { getSearchSelector } from "../../../redux/slices/filterSlice"
 import { getTokenSelector } from "../../../redux/slices/userSlice"
 
 const ProductsInner = ({ data }) => {
+  const [sort, setSort] = useState(data.products)
+
+  const productSort = (value) => {
+    if (value === "priceUp") {
+      let dataPrice = [...data.products].sort((a, b) =>
+        a.price > b.price ? 1 : -1
+      )
+      setSort(dataPrice)
+    }
+    if (value === "priceDown") {
+      let dataPrice = [...data.products].sort((a, b) =>
+        b.price > a.price ? 1 : -1
+      )
+      setSort(dataPrice)
+    }
+    if (value === "discountUp") {
+      let dataDiscount = [...data.products].sort((a, b) =>
+        b.discount > a.discount ? 1 : -1
+      )
+      setSort(dataDiscount)
+    }
+    if (value === "discountDown") {
+      let dataDiscount = [...data.products].sort((a, b) =>
+        a.discount > b.discount ? 1 : -1
+      )
+      setSort(dataDiscount)
+    }
+    if (value === "nameUp") {
+      let dataName = [...data.products].sort((a, b) =>
+        a.name.localeCompare(b.name)
+      )
+      setSort(dataName)
+    }
+    if (value === "nameDown") {
+      let dataName = [...data.products].sort((a, b) =>
+        b.name.localeCompare(a.name)
+      )
+      setSort(dataName)
+    }
+  }
+
+  useEffect(() => {
+    setSort(data.products)
+  }, [data.products])
+
   const clickToScrollUp = () => window.scrollTo(0, 0) // скрол вверх
   const clickToScrollDown = () => window.scrollTo(0, document.body.scrollHeight) // скрол вниз
 
   return (
     <>
+      <div className={styles.btnSortWr}>
+        <div className={styles.btnSortContainer}>
+          <p>Сортировка товаров:</p>
+          <div className={styles.btnPrice}>
+            <p>Цена:</p>
+            <button
+              className={styles.btnSortUp}
+              type="button"
+              onClick={() => productSort("priceUp")}
+            >
+              <FontAwesomeIcon icon={faCaretUp} />
+            </button>
+            <button
+              className={styles.btnSortDown}
+              type="button"
+              onClick={() => productSort("priceDown")}
+            >
+              <FontAwesomeIcon icon={faCaretDown} />
+            </button>
+          </div>
+          <div className={styles.btnDiscount}>
+            <p>Скидка:</p>
+            <button
+              className={styles.btnSortUp}
+              type="button"
+              onClick={() => productSort("discountUp")}
+            >
+              <FontAwesomeIcon icon={faCaretUp} />
+            </button>
+            <button
+              className={styles.btnSortDown}
+              type="button"
+              onClick={() => productSort("discountDown")}
+            >
+              <FontAwesomeIcon icon={faCaretDown} />
+            </button>
+          </div>
+          <div className={styles.btnName}>
+            <p>Название:</p>
+            <button type="button" onClick={() => productSort("nameUp")}>
+              от А-Я
+            </button>
+            <button type="button" onClick={() => productSort("nameDown")}>
+              от Я-А
+            </button>
+          </div>
+        </div>
+      </div>
       <div>
         <div className={styles.productsList}>
-          {data.products.map(({ _id: id, ...restProduct }) => (
+          {sort.map(({ _id: id, ...restProduct }) => (
             <ProductItem {...restProduct} id={id} key={id} />
           ))}
         </div>

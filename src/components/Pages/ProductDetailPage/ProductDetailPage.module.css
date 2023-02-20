@@ -67,7 +67,7 @@
 }
 
 span {
-  color: black;
+  color: white;
   font-weight: 500;
 }
 
@@ -110,4 +110,16 @@ span {
 
 .star *:hover {
   color: chocolate;
+}
+
+.stock > span {
+  color: black;
+}
+
+.wight > span {
+  color: black;
+}
+
+.descriptionTitle > span {
+  color: black;
 }
