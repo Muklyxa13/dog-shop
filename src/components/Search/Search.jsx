@@ -34,6 +34,7 @@ export const Search = () => {
         <div className={styles.search}>
           <label htmlFor="search">Поиск товаров:</label>
           <input
+            className={styles.input}
             id="search"
             placeholder="Поиск по товарам"
             value={search}

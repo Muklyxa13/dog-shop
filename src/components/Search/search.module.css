@@ -1,25 +1,32 @@
 .search {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  /* border: 1px solid rgba(17, 28, 51, 0.5); */
-  border-radius: 6px;
-  box-shadow: 0px 0px 4px 8px white;
-  background-color: white;
   display: flex;
   gap: 10px;
 }
 
 .search > label {
-  color: rgb(17, 28, 51);
+  color: white;
   text-shadow: none;
+  align-self: center;
 }
 
 .wr {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  position: sticky;
-  top: 32px;
+  position: fixed;
+  top: 36px;
+  left: 290px;
   z-index: 1;
-  height: max-content;
+}
+
+.input {
+  border: 1px solid white;
+  background: rgba(17, 28, 51, 0.6);
+  color: white;
+  height: 35px;
+}
+
+.input::placeholder {
+  color: white;
+  opacity: 0.4;
 }

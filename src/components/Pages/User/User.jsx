@@ -16,7 +16,7 @@ export const User = () => {
 
   return (
     <>
-      <h3>Информация о пользователе</h3>
+      <h3 className={styles.title}>Информация о пользователе</h3>
       <div className={styles.wr}>
         <div className={styles.avatarBox}>
           <img className={styles.avatar} src={data.avatar} alt="avatar" />

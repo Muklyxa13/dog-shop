@@ -27,41 +27,49 @@ const ProductsInner = ({ data }) => {
       ...Object.fromEntries(sortParams.entries()),
       value: newSortValue,
     })
-    if (value === "priceUp") {
-      let dataPrice = [...data.products].sort((a, b) =>
-        a.price > b.price ? 1 : -1
-      )
-      setSort(dataPrice)
-    }
-    if (value === "priceDown") {
-      let dataPrice = [...data.products].sort((a, b) =>
-        b.price > a.price ? 1 : -1
-      )
-      setSort(dataPrice)
-    }
-    if (value === "discountUp") {
-      let dataDiscount = [...data.products].sort((a, b) =>
-        b.discount > a.discount ? 1 : -1
-      )
-      setSort(dataDiscount)
-    }
-    if (value === "discountDown") {
-      let dataDiscount = [...data.products].sort((a, b) =>
-        a.discount > b.discount ? 1 : -1
-      )
-      setSort(dataDiscount)
-    }
-    if (value === "nameUp") {
-      let dataName = [...data.products].sort((a, b) =>
-        a.name.localeCompare(b.name)
-      )
-      setSort(dataName)
-    }
-    if (value === "nameDown") {
-      let dataName = [...data.products].sort((a, b) =>
-        b.name.localeCompare(a.name)
-      )
-      setSort(dataName)
+    switch (value) {
+      case "priceUp":
+        data = [...data.products].sort((a, b) => (a.price > b.price ? 1 : -1))
+        setSort(data)
+        break
+      case "priceDown":
+        data = [...data.products].sort((a, b) => (b.price > a.price ? 1 : -1))
+        setSort(data)
+        break
+      case "discountUp":
+        data = [...data.products].sort((a, b) =>
+          b.discount > a.discount ? 1 : -1
+        )
+        setSort(data)
+        break
+      case "discountDown":
+        data = [...data.products].sort((a, b) =>
+          a.discount > b.discount ? 1 : -1
+        )
+        setSort(data)
+        break
+      case "nameUp":
+        data = [...data.products].sort((a, b) => a.name.localeCompare(b.name))
+        setSort(data)
+        break
+      case "nameDown":
+        data = [...data.products].sort((a, b) => b.name.localeCompare(a.name))
+        setSort(data)
+        break
+      case "dateUp":
+        data = [...data.products].sort((a, b) =>
+          a.created_at > b.created_at ? 1 : -1
+        )
+        setSort(data)
+        break
+      case "dateDown":
+        data = [...data.products].sort((a, b) =>
+          b.created_at > a.created_at ? 1 : -1
+        )
+        setSort(data)
+        break
+      default:
+        break
     }
   }
 
@@ -80,14 +88,14 @@ const ProductsInner = ({ data }) => {
           <div className={styles.btnPrice}>
             <p>Цена:</p>
             <button
-              className={styles.btnSortUp}
+              className={styles.btnSort}
               type="button"
               onClick={() => productSort("priceUp")}
             >
               <FontAwesomeIcon icon={faCaretUp} />
             </button>
             <button
-              className={styles.btnSortDown}
+              className={styles.btnSort}
               type="button"
               onClick={() => productSort("priceDown")}
             >
@@ -97,14 +105,14 @@ const ProductsInner = ({ data }) => {
           <div className={styles.btnDiscount}>
             <p>Скидка:</p>
             <button
-              className={styles.btnSortUp}
+              className={styles.btnSort}
               type="button"
               onClick={() => productSort("discountUp")}
             >
               <FontAwesomeIcon icon={faCaretUp} />
             </button>
             <button
-              className={styles.btnSortDown}
+              className={styles.btnSort}
               type="button"
               onClick={() => productSort("discountDown")}
             >
@@ -112,12 +120,37 @@ const ProductsInner = ({ data }) => {
             </button>
           </div>
           <div className={styles.btnName}>
-            <p>Название:</p>
-            <button type="button" onClick={() => productSort("nameUp")}>
-              от А-Я
+            <p>Дата добавления:</p>
+            <button
+              className={styles.btnSort}
+              type="button"
+              onClick={() => productSort("dateUp")}
+            >
+              <FontAwesomeIcon icon={faCaretUp} />
             </button>
-            <button type="button" onClick={() => productSort("nameDown")}>
-              от Я-А
+            <button
+              className={styles.btnSort}
+              type="button"
+              onClick={() => productSort("dateDown")}
+            >
+              <FontAwesomeIcon icon={faCaretDown} />
+            </button>
+          </div>
+          <div className={styles.btnName}>
+            <p>Название:</p>
+            <button
+              className={styles.btnSort}
+              type="button"
+              onClick={() => productSort("nameUp")}
+            >
+              А-Я
+            </button>
+            <button
+              className={styles.btnSort}
+              type="button"
+              onClick={() => productSort("nameDown")}
+            >
+              Я-А
             </button>
           </div>
         </div>
