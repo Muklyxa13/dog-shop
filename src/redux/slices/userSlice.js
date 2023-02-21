@@ -9,6 +9,9 @@ const userSlice = createSlice({
       return {
         ...state,
         _id: action.payload.data._id,
+        name: action.payload.data.name,
+        about: action.payload.data.about,
+        avatar: action.payload.data.avatar,
         group: action.payload.data.group,
         email: action.payload.data.email,
         token: action.payload.token,

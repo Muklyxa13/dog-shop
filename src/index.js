@@ -13,6 +13,7 @@ import { Provider } from "react-redux"
 import { SearchAndProducts } from "./components/SearchAndProducts/SearchAndProducts"
 import { ProductDetailPage } from "./components/Pages/ProductDetailPage/ProductDetailPage"
 import { FavoritePage } from "./components/Pages/FavoritePage/FavoritePage"
+import { User } from "./components/Pages/User/User"
 
 const router = createBrowserRouter(
   [
@@ -43,6 +44,10 @@ const router = createBrowserRouter(
         {
           path: "/favorite",
           element: <FavoritePage />,
+        },
+        {
+          path: "/user",
+          element: <User />,
         },
         {
           // path: "main",

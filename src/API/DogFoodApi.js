@@ -111,6 +111,15 @@ class DogFoodApi {
     })
     return res.json()
   }
+
+  async getUserByToken(token) {
+    const res = await fetch(`${this.baseUrl}/v2/sm9/users/me`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+    return res.json()
+  }
 }
 
 export const dogFoodApi = new DogFoodApi({

@@ -110,7 +110,15 @@ export const ProductDetailPage = () => {
             <p>Отзывы о товаре:</p>
             {data.reviews.map((el) => (
               <div className={styles.commentsContainer}>
+                <p>{el.author}</p>
                 <p>{stars(el.rating)}</p>
+                <p>
+                  {el.created_at
+                    .substring(0, 10)
+                    .split("-")
+                    .reverse()
+                    .join(".")}
+                </p>
                 <p>{el.text}</p>
               </div>
             ))}

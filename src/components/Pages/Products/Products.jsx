@@ -1,7 +1,7 @@
 /* eslint-disable no-debugger */
 import { useQuery } from "@tanstack/react-query"
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useSearchParams } from "react-router-dom"
 import { dogFoodApi } from "../../../API/DogFoodApi"
 import { ProductItem } from "../ProductItem/ProductItem"
 import styles from "./products.module.css"
@@ -17,9 +17,16 @@ import { getSearchSelector } from "../../../redux/slices/filterSlice"
 import { getTokenSelector } from "../../../redux/slices/userSlice"
 
 const ProductsInner = ({ data }) => {
+  const [sortParams, setSortParams] = useSearchParams()
   const [sort, setSort] = useState(data.products)
 
   const productSort = (value) => {
+    const newSortValue = value
+    setSort(newSortValue)
+    setSortParams({
+      ...Object.fromEntries(sortParams.entries()),
+      value: newSortValue,
+    })
     if (value === "priceUp") {
       let dataPrice = [...data.products].sort((a, b) =>
         a.price > b.price ? 1 : -1

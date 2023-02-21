@@ -103,3 +103,23 @@
   display: flex;
   gap: 20px;
 }
+
+.user {
+  align-self: center;
+  color: white;
+  height: 100%;
+  font-size: 16px;
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 8px;
+  background-color: rgba(17, 28, 51, 0.6);
+  padding: 4px;
+}
+
+.user a {
+  color: white;
+}
+
+.user:hover {
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
+}

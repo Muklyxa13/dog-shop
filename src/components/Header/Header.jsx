@@ -4,7 +4,7 @@ import styles from "./header.module.css"
 import classNames from "classnames"
 import logoTest from "../../images/logo_test.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons"
+import { faCartShopping, faIdCard } from "@fortawesome/free-solid-svg-icons"
 import { faHeart } from "@fortawesome/free-regular-svg-icons"
 import { useDispatch, useSelector } from "react-redux"
 import { getCartDetailsSelector } from "../../redux/slices/cartDetailsSlice"
@@ -33,6 +33,20 @@ export const Header = () => {
                   alt="логотип"
                 ></img>
               </Link>
+              {token ? (
+                <div className={styles.user}>
+                  <NavLink
+                    className={({ isActive }) =>
+                      classNames({ [styles.activeLink]: isActive })
+                    }
+                    to="/user"
+                  >
+                    <FontAwesomeIcon icon={faIdCard} />
+                  </NavLink>
+                </div>
+              ) : (
+                ""
+              )}
               <div className={styles.productsLink}>
                 <NavLink
                   className={({ isActive }) =>

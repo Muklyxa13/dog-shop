@@ -3,16 +3,27 @@ import styles from "./search.module.css"
 import { useDispatch } from "react-redux"
 import { changeSearchFilter } from "../../redux/slices/filterSlice"
 import { useDebounce } from "../hooks/useDebounce"
-import { Sort } from "../Sort/Sort"
+import { useSearchParams } from "react-router-dom"
 
 export const Search = () => {
-  const [search, setSearch] = useState("")
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [search, setSearch] = useState(() => {
+    const searchValueFromQuery = searchParams.get("q")
+
+    return searchValueFromQuery ?? ""
+  })
   const dispatch = useDispatch()
   const debouncedSearchValue = useDebounce(search)
+
   const changeSearchHandler = (e) => {
     const newSearchValue = e.target.value
     setSearch(newSearchValue)
+    setSearchParams({
+      ...Object.fromEntries(searchParams.entries()),
+      q: newSearchValue,
+    })
   }
+
   useEffect(() => {
     dispatch(changeSearchFilter(debouncedSearchValue))
   }, [debouncedSearchValue, dispatch])
@@ -24,7 +35,6 @@ export const Search = () => {
           <label htmlFor="search">Поиск товаров:</label>
           <input
             id="search"
-            // className={styles.search}
             placeholder="Поиск по товарам"
             value={search}
             onChange={changeSearchHandler}
