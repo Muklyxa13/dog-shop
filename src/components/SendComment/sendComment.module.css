@@ -1,9 +1,10 @@
-.textarea {
+.field {
   border: 1px solid black;
   border-radius: 10px;
   width: 700px;
   min-height: 80px;
   max-height: 300px;
+  margin: 0;
 }
 
 .btn {
@@ -22,4 +23,27 @@
 .wr {
   display: grid;
   justify-items: center;
+  margin-top: 30px;
+}
+
+.label {
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  color: black;
+  font-weight: 300;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.errorMessage {
+  display: flex;
+  justify-content: start;
+  opacity: 0.5;
+  height: 30px;
 }

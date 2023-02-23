@@ -12,17 +12,21 @@
   border: 1px solid white;
   border-radius: 10px;
   box-shadow: 0 0 30px 4px black;
-  padding: 14px;
+  padding: 6px;
 }
 
 .infoBox {
   border: 1px solid black;
   border-radius: 10px;
+  padding-left: 10px;
+  padding-top: 4px;
 }
 
 .infoTitle {
   font-size: 20px;
   font-weight: 500;
+  display: flex;
+  justify-content: center;
 }
 
 .info > span {
@@ -50,6 +54,16 @@
 
 .btn > button {
   cursor: pointer;
+  background-color: rgba(17, 28, 51, 0.9);
+  color: white;
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 4px;
+  margin-top: 8px;
+}
+
+.btn > button:hover {
+  box-shadow: 0 0 4px 1px rgba(17, 28, 51, 0.9);
 }
 
 .priceBox {
@@ -104,14 +118,6 @@ span {
   align-items: baseline;
 }
 
-.star * {
-  color: gold;
-}
-
-.star *:hover {
-  color: chocolate;
-}
-
 .stock > span {
   color: black;
 }
@@ -122,4 +128,10 @@ span {
 
 .descriptionTitle > span {
   color: black;
+}
+
+.reviews {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
 }

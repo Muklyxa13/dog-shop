@@ -100,20 +100,29 @@ class DogFoodApi {
     )
   }
 
-  async setCommentById(productId, token) {
+  async pushCommentById(productId, token, values) {
     const res = await fetch(`${this.baseUrl}/products/review/${productId}`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-type": "application/json",
         authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(),
+      body: JSON.stringify(values),
     })
     return res.json()
   }
 
   async getUserByToken(token) {
     const res = await fetch(`${this.baseUrl}/v2/sm9/users/me`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+    return res.json()
+  }
+
+  async getReviewsById(productId, token) {
+    const res = await fetch(`${this.baseUrl}/products/review/${productId}`, {
       headers: {
         authorization: `Bearer ${token}`,
       },

@@ -1,0 +1,110 @@
+.wr {
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.5);
+  padding: 6px;
+  background: gray;
+}
+
+.avatar {
+  height: 60px;
+  width: 60px;
+  border: none;
+  border-radius: 10px;
+}
+
+.star * {
+  color: gold;
+}
+
+.star *:hover {
+  color: chocolate;
+}
+
+.rating {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.infoUser {
+  display: flex;
+  justify-content: space-between;
+}
+
+.infoUserText {
+  display: flex;
+  gap: 8px;
+}
+
+.ratingBox {
+  width: 100px;
+}
+
+.commentsContainer {
+  border: none;
+  border-radius: 10px;
+  padding: 6px;
+  margin-bottom: 6px;
+  background: white;
+}
+
+.name,
+.about {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+}
+
+.nameSpan,
+.aboutSpan,
+.ratingSpan {
+  color: black;
+  opacity: 0.4;
+  font-weight: 400;
+}
+
+.text,
+.date {
+  margin: 0;
+  padding: 0;
+}
+
+.date {
+  display: flex;
+  justify-content: end;
+  opacity: 0.5;
+}
+
+.hr {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.about {
+  max-width: 496px;
+}
+
+.text {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  max-height: 100px;
+  max-width: 660px;
+  overflow-y: auto;
+}
+
+.text::-webkit-scrollbar {
+  width: 8px;
+}
+
+.text::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.text::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}

@@ -14,6 +14,7 @@ import { SearchAndProducts } from "./components/SearchAndProducts/SearchAndProdu
 import { ProductDetailPage } from "./components/Pages/ProductDetailPage/ProductDetailPage"
 import { FavoritePage } from "./components/Pages/FavoritePage/FavoritePage"
 import { User } from "./components/Pages/User/User"
+import { ProductReviewsById } from "./components/Pages/ProductDetailPage/ProductReviewsById/ProductReviewsById"
 
 const router = createBrowserRouter(
   [
@@ -42,6 +43,10 @@ const router = createBrowserRouter(
           element: <ProductDetailPage />,
         },
         {
+          path: "/products/:productId",
+          element: <ProductReviewsById />,
+        },
+        {
           path: "/favorite",
           element: <FavoritePage />,
         },
@@ -56,8 +61,8 @@ const router = createBrowserRouter(
         },
       ],
     },
-  ],
-  { basename: "/dog-shop/" }
+  ]
+  // { basename: "/dog-shop/" }
 )
 
 const queryClient = new QueryClient({

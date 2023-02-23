@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import { useQuery } from "@tanstack/react-query"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
@@ -15,8 +14,8 @@ import {
   addFavorite,
   getFavoriteSelector,
 } from "../../../redux/slices/favoriteSlice"
-import { ReactComponent as Star } from "../../../images/star_painted.svg"
 import { SendComment } from "../../SendComment/SendComment"
+import { ProductReviewsById } from "./ProductReviewsById/ProductReviewsById"
 
 export const ProductDetailPage = () => {
   const { productId } = useParams()
@@ -36,11 +35,6 @@ export const ProductDetailPage = () => {
   const addProductFavorite = () => dispath(addFavorite(data._id)) // добавление товара в избранное
   const isExistInCart = cartDataIds.map(({ id }) => id).includes(data._id) // проверка на добавление товара в корзину (деструктуризируем объект и сразу получаем id)
   const isExistInFavorite = favoritePage.map(({ id }) => id).includes(data._id) // проверка на добавление товара в избранное
-  const stars = (rating) => {
-    let arrStars = [] // хранилище для *
-    arrStars.length = rating
-    return arrStars.fill(null).map(() => <Star className={styles.star} />)
-  }
 
   return (
     <div>
@@ -107,21 +101,8 @@ export const ProductDetailPage = () => {
         <div className={styles.commentsBox}>
           <SendComment />
           <div>
-            <p>Отзывы о товаре:</p>
-            {data.reviews.map((el) => (
-              <div className={styles.commentsContainer}>
-                <p>{el.author}</p>
-                <p>{stars(el.rating)}</p>
-                <p>
-                  {el.created_at
-                    .substring(0, 10)
-                    .split("-")
-                    .reverse()
-                    .join(".")}
-                </p>
-                <p>{el.text}</p>
-              </div>
-            ))}
+            <p className={styles.reviews}>Отзывы о товаре:</p>
+            <ProductReviewsById />
           </div>
         </div>
       </div>
