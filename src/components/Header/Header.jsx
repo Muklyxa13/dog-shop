@@ -1,4 +1,4 @@
-import { memo } from "react"
+import { memo, useState } from "react"
 import { Link, NavLink } from "react-router-dom"
 import styles from "./header.module.css"
 import classNames from "classnames"
@@ -12,6 +12,11 @@ import { getTokenSelector, removeUser } from "../../redux/slices/userSlice"
 import { getFavoriteSelector } from "../../redux/slices/favoriteSlice"
 
 export const Header = () => {
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false)
+
+  const openAddModalHandler = () => {
+    setIsAddModalOpen(true)
+  }
   const dispatch = useDispatch()
   const productsCart = useSelector(getCartDetailsSelector) // массив товаров, добавленных корзину
   const productsFavorite = useSelector(getFavoriteSelector)
@@ -63,12 +68,22 @@ export const Header = () => {
             {token ? (
               <>
                 <div className={styles.cart}>
-                  <NavLink to="/favorite">
+                  <NavLink
+                    className={({ isActive }) =>
+                      classNames({ [styles.activeLink]: isActive })
+                    }
+                    to="/favorite"
+                  >
                     {productsFavorite.length} <FontAwesomeIcon icon={faHeart} />
                   </NavLink>
                 </div>
                 <div className={styles.cart}>
-                  <NavLink to="/cart">
+                  <NavLink
+                    className={({ isActive }) =>
+                      classNames({ [styles.activeLink]: isActive })
+                    }
+                    to="/cart"
+                  >
                     {productsCart.length}{" "}
                     <FontAwesomeIcon icon={faCartShopping} />
                   </NavLink>

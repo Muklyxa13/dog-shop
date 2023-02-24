@@ -159,7 +159,6 @@ export const Cart = () => {
                   <div className={styles.totalPrice}>{getTotalPrice()} ₽</div>
                 </div>
               </div>
-
               <div className={styles.btnBox}>
                 <button
                   className={styles.btnCart}

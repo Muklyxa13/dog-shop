@@ -51,3 +51,18 @@
   justify-content: center;
   margin-top: 10px;
 }
+
+.btnBox {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+
+.btnInfo {
+  margin-top: 20px;
+}
+
+.btn {
+  display: flex;
+  gap: 8px;
+}

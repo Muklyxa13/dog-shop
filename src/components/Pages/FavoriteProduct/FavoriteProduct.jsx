@@ -33,6 +33,10 @@ export const FavoriteProduct = ({
   const addItemToCart = () => dispath(addCartDetails(id)) // добавление товара в корзину
   const isExistInCart = cartDataIds.map(({ id }) => id).includes(id) // проверка на наличие товара в корзине
 
+  if (String(price).length >= 5) {
+    price = 9999
+  }
+
   return (
     <div className={styles.item}>
       <div className={styles.itemBox}>
@@ -61,9 +65,11 @@ export const FavoriteProduct = ({
           <p className={styles.textCart}>В наличии: {stock} шт.</p>
         </div>
         <div className={styles.itemPrice}>
-          <h6>
-            <span>{discount > 0 && `${price} ₽`}</span>
-          </h6>
+          {discount > 0 && (
+            <h6>
+              <span>{discount > 0 && `${price} ₽`}</span>
+            </h6>
+          )}
           <h4>
             {discount > 0 && `${(price * (100 - discount)) / 100} ₽`}
             {discount === 0 && `${price} ₽`}

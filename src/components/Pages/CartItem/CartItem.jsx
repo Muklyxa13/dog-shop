@@ -46,6 +46,10 @@ export const CartItem = ({
     // один выбранный товар
   }
 
+  if (String(price).length >= 5) {
+    price = 9999
+  }
+
   return (
     <div className={styles.item}>
       <div className={styles.itemBox}>

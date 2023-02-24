@@ -66,6 +66,10 @@
   box-shadow: 0 0 4px 1px rgba(17, 28, 51, 0.9);
 }
 
+.btn > button:disabled {
+  background-color: gray;
+}
+
 .priceBox {
   display: flex;
 }

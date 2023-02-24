@@ -68,3 +68,8 @@
 .btnSort:hover {
   color: black;
 }
+
+.btnSort:focus {
+  color: black;
+  background-color: skyblue;
+}

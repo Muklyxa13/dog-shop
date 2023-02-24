@@ -1,0 +1,14 @@
+.wr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.errorMessage {
+  font-size: 10px;
+}

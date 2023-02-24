@@ -15,6 +15,7 @@ import { ProductDetailPage } from "./components/Pages/ProductDetailPage/ProductD
 import { FavoritePage } from "./components/Pages/FavoritePage/FavoritePage"
 import { User } from "./components/Pages/User/User"
 import { ProductReviewsById } from "./components/Pages/ProductDetailPage/ProductReviewsById/ProductReviewsById"
+import { AddNewProduct } from "./components/Pages/AddNewProduct/AddNewProduct"
 
 const router = createBrowserRouter(
   [
@@ -55,14 +56,18 @@ const router = createBrowserRouter(
           element: <User />,
         },
         {
+          path: "/user",
+          element: <AddNewProduct />,
+        },
+        {
           // path: "main",
           index: true,
           element: <Main />,
         },
       ],
     },
-  ]
-  // { basename: "/dog-shop/" }
+  ],
+  { basename: "/dog-shop/" }
 )
 
 const queryClient = new QueryClient({

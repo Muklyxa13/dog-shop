@@ -9,15 +9,12 @@ import styles from "./ProductReviewsById.module.css"
 
 export const ProductReviewsById = () => {
   const { productId } = useParams()
-  console.log(productId)
   const token = useSelector(getTokenSelector)
   const { data, isLoading } = useQuery({
     queryKey: ["reviews"],
     queryFn: () => dogFoodApi.getReviewsById(productId, token),
     keepPreviousData: true,
   })
-
-  console.log(data)
 
   if (isLoading) return <Loader />
 
