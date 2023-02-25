@@ -38,8 +38,8 @@ export const FavoritePage = () => {
       {" "}
       {!favoritePage.length ? (
         <div className={styles.clearCart}>
-          <h1>Избранных товаров нет</h1>
-          <p>
+          <h1 className={styles.clearCartH}>Избранных товаров нет</h1>
+          <p className={styles.clearCartP}>
             Посмотрите предложения на {<Link to="/">главной странице</Link>} или
             воспользуйтесь
             {<Link to="/products"> каталогом</Link>}

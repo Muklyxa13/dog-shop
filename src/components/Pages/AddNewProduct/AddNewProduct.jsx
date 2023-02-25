@@ -7,8 +7,9 @@ import { ErrorMessage, Field, Form, Formik } from "formik"
 import { validatorProduct } from "./validatorProduct"
 import { getTokenSelector } from "../../../redux/slices/userSlice"
 import { useNavigate } from "react-router-dom"
+import PropTypes from "prop-types"
 
-export const AddNewProduct = () => {
+export const AddNewProduct = ({ closeModalHandler }) => {
   const token = useSelector(getTokenSelector)
   const navigate = useNavigate()
   const queryClient = useQueryClient()
@@ -28,6 +29,7 @@ export const AddNewProduct = () => {
 
   const submitHandler = async (values) => {
     await mutateAsync(values)
+    closeModalHandler()
     queryClient.invalidateQueries({
       queryKey: ["user"],
     })
@@ -113,4 +115,8 @@ export const AddNewProduct = () => {
       </Form>
     </Formik>
   )
+}
+
+AddNewProduct.propTypes = {
+  closeModalHandler: PropTypes.element,
 }

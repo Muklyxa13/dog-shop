@@ -14,12 +14,12 @@ const ModalInner = ({ closeHandler, children }) => {
     return () => {
       document.removeEventListener("keyup", closeModalByEscape)
     }
-  }, [])
+  }, [closeHandler])
 
   return <div className={styles.modalInner}>{children}</div>
 }
 
-export const Modal = ({ isOpen, closeHandler, children }) => {
+export const Modal = ({ isOpen = false, closeHandler, children }) => {
   if (!isOpen) return null
 
   const closeModalByClickWrapper = (e) => {

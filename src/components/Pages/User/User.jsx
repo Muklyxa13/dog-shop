@@ -80,7 +80,7 @@ export const User = () => {
             icon={faXmark}
             onClick={closeModalHandler}
           />
-          <AddNewProduct />
+          <AddNewProduct closeModalHandler={closeModalHandler} />
         </div>
       </Modal>
     </>

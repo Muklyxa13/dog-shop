@@ -77,6 +77,10 @@
   position: relative;
 }
 
+.clearCartP {
+  width: 600px;
+}
+
 .dogLeft {
   position: absolute;
   height: 500px;

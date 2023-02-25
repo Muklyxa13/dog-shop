@@ -7,8 +7,9 @@ import { getTokenSelector } from "../../../redux/slices/userSlice"
 import { Loader } from "../../Loader/Loader"
 import { validatorProduct } from "../AddNewProduct/validatorProduct"
 import styles from "./EditProduct.module.css"
+import PropTypes from "prop-types"
 
-export const EditProduct = () => {
+export const EditProduct = ({ closeEditModalHandler }) => {
   const { productId } = useParams()
   const token = useSelector(getTokenSelector)
   const queryClient = useQueryClient()
@@ -28,6 +29,7 @@ export const EditProduct = () => {
 
   const editHandler = async (values) => {
     await mutateAsync(values)
+    closeEditModalHandler()
     queryClient.invalidateQueries({
       queryKey: ["detailPage"],
     })
@@ -113,4 +115,8 @@ export const EditProduct = () => {
       </Form>
     </Formik>
   )
+}
+
+EditProduct.propTypes = {
+  closeEditModalHandler: PropTypes.element,
 }

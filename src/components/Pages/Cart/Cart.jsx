@@ -88,7 +88,7 @@ export const Cart = () => {
           <img className={styles.dogLeft} src={dogLeft} alt="dog" />
           <img className={styles.dogRight} src={dogRight} alt="dog" />
           <h1>Корзина пуста</h1>
-          <p>
+          <p className={styles.clearCartP}>
             Посмотрите предложения на {<Link to="/">главной странице</Link>} или
             воспользуйтесь
             {<Link to="/products"> каталогом</Link>}

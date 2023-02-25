@@ -1,7 +1,7 @@
 import * as Yup from "yup"
 
 export const validatorProduct = Yup.object({
-  pictures: Yup.string().required("Необходимо вставить url картинки"),
+  pictures: Yup.string().url().required("Необходимо вставить url картинки"),
   name: Yup.string().required("Необходимо написать название товара"),
   price: Yup.string().required("Необходимо написать цену"),
   discount: Yup.string().required("Необходимо написать скидку"),

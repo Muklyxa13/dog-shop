@@ -33,19 +33,22 @@ export const ProductDetailPage = () => {
   const userId = useSelector(getUserIdSelector)
   const cartDataIds = useSelector(getCartDetailsSelector)
   const favoritePage = useSelector(getFavoriteSelector)
-
   const [isOpenEditModal, setIsOpenEditModal] = useState(false)
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
   const closeEditModalHandler = () => {
+    document.body.style.overflow = ""
     setIsOpenEditModal(false)
   }
   const openEditModalHandler = () => {
+    document.body.style.overflow = "hidden"
     setIsOpenEditModal(true)
   }
   const closeDeleteModalHandler = () => {
+    document.body.style.overflow = ""
     setIsOpenDeleteModal(false)
   }
   const openDeleteModalHandler = () => {
+    document.body.style.overflow = "hidden"
     setIsOpenDeleteModal(true)
   }
 
@@ -66,6 +69,7 @@ export const ProductDetailPage = () => {
 
   const deleteHandler = async () => {
     await mutateAsync()
+    document.body.style.overflow = ""
     navigate("/products")
   }
 
@@ -179,7 +183,7 @@ export const ProductDetailPage = () => {
             icon={faXmark}
             onClick={closeEditModalHandler}
           />
-          <EditProduct />
+          <EditProduct closeEditModalHandler={closeEditModalHandler} />
         </div>
       </Modal>
       <Modal isOpen={isOpenDeleteModal} closeHandler={closeDeleteModalHandler}>

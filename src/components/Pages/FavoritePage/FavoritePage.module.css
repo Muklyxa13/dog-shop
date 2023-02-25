@@ -42,3 +42,15 @@
 .btnClear:hover {
   box-shadow: 0 0 4px 1px rgba(17, 28, 51, 0.9);
 }
+
+.clearCart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.clearCartP {
+  font-size: 20px;
+}
