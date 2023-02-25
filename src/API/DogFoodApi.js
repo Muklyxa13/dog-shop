@@ -113,7 +113,6 @@ class DogFoodApi {
   }
 
   async addNewProduct(values, token) {
-    console.log(token)
     const res = await fetch(`${this.baseUrl}/products`, {
       method: "POST",
       headers: {
@@ -122,6 +121,32 @@ class DogFoodApi {
       },
       body: JSON.stringify(values),
     })
+    return res.json()
+  }
+
+  async editProduct(values, token, productId) {
+    const res = await fetch(`${this.baseUrl}/products/${productId}`, {
+      method: "PATCH",
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(values),
+    })
+    return res.json()
+  }
+
+  async deleteProduct(token, productId) {
+    const res = await fetch(`${this.baseUrl}/products/${productId}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
+      },
+    })
+    if (res.status === 403) {
+      throw new Error(`Нельзя удалить чужой товар!. Status: ${res.status}`)
+    }
     return res.json()
   }
 
@@ -139,6 +164,18 @@ class DogFoodApi {
       headers: {
         authorization: `Bearer ${token}`,
       },
+    })
+    return res.json()
+  }
+
+  async editUserAvatar(token, value) {
+    const res = await fetch(`${this.baseUrl}/v2/sm9/users/me/avatar`, {
+      method: "PATCH",
+      headers: {
+        authorization: `Bearer ${token}`,
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(value),
     })
     return res.json()
   }

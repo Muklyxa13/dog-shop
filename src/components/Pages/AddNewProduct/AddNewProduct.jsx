@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useSelector } from "react-redux"
 import { dogFoodApi } from "../../../API/DogFoodApi"
 import { Loader } from "../../Loader/Loader"
@@ -6,10 +6,12 @@ import styles from "./AddNewProduct.module.css"
 import { ErrorMessage, Field, Form, Formik } from "formik"
 import { validatorProduct } from "./validatorProduct"
 import { getTokenSelector } from "../../../redux/slices/userSlice"
+import { useNavigate } from "react-router-dom"
 
 export const AddNewProduct = () => {
   const token = useSelector(getTokenSelector)
-  console.log(token)
+  const navigate = useNavigate()
+  const queryClient = useQueryClient()
   const initProductValues = {
     pictures: "",
     name: "",
@@ -25,8 +27,10 @@ export const AddNewProduct = () => {
   })
 
   const submitHandler = async (values) => {
-    console.log({ values })
     await mutateAsync(values)
+    queryClient.invalidateQueries({
+      queryKey: ["user"],
+    })
   }
 
   if (isLoading) return <Loader />
@@ -42,42 +46,50 @@ export const AddNewProduct = () => {
           <label htmlFor="pictures">Ссылка</label>
           <Field name="pictures" placeholder="url" type="text" />
           <div className={styles.errorMessage}>
-            <ErrorMessage component="p" className="error" name="pictures" />
+            <ErrorMessage
+              component="p"
+              className={styles.error}
+              name="pictures"
+            />
           </div>
         </div>
         <div className={styles.inputBox}>
           <label htmlFor="name">Название</label>
           <Field name="name" placeholder="название продукта" type="text" />
           <div className={styles.errorMessage}>
-            <ErrorMessage component="p" className="error" name="name" />
+            <ErrorMessage component="p" className={styles.error} name="name" />
           </div>
         </div>
         <div className={styles.inputBox}>
           <label htmlFor="price">Цена</label>
           <Field name="price" placeholder="цена продукта" type="text" />
           <div className={styles.errorMessage}>
-            <ErrorMessage component="p" className="error" name="price" />
+            <ErrorMessage component="p" className={styles.error} name="price" />
           </div>
         </div>
         <div className={styles.inputBox}>
           <label htmlFor="discount">Скидка</label>
           <Field name="discount" placeholder="скидка продукта" type="text" />
           <div className={styles.errorMessage}>
-            <ErrorMessage component="p" className="error" name="discount" />
+            <ErrorMessage
+              component="p"
+              className={styles.error}
+              name="discount"
+            />
           </div>
         </div>
         <div className={styles.inputBox}>
           <label htmlFor="stock">Остаток</label>
           <Field name="stock" placeholder="количество продуктов" type="text" />
           <div className={styles.errorMessage}>
-            <ErrorMessage component="p" className="error" name="stock" />
+            <ErrorMessage component="p" className={styles.error} name="stock" />
           </div>
         </div>
         <div className={styles.inputBox}>
           <label htmlFor="wight">Вес</label>
           <Field name="wight" placeholder="вес продукта" type="text" />
           <div className={styles.errorMessage}>
-            <ErrorMessage component="p" className="error" name="wight" />
+            <ErrorMessage component="p" className={styles.error} name="wight" />
           </div>
         </div>
         <div className={styles.inputBox}>
@@ -88,10 +100,16 @@ export const AddNewProduct = () => {
             type="text"
           />
           <div className={styles.errorMessage}>
-            <ErrorMessage component="p" className="error" name="description" />
+            <ErrorMessage
+              component="p"
+              className={styles.error}
+              name="description"
+            />
           </div>
         </div>
-        <button type="submit">Создать</button>
+        <button type="submit" className={styles.btn}>
+          Создать
+        </button>
       </Form>
     </Formik>
   )

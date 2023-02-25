@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useQuery } from "@tanstack/react-query"
 import { useState } from "react"
 import { useSelector } from "react-redux"
@@ -7,6 +8,7 @@ import { Loader } from "../../Loader/Loader"
 import { Modal } from "../../Modal/Modal"
 import { AddNewProduct } from "../AddNewProduct/AddNewProduct"
 import styles from "./user.module.css"
+import { faXmark } from "@fortawesome/free-solid-svg-icons"
 
 export const User = () => {
   const token = useSelector(getTokenSelector)
@@ -60,16 +62,26 @@ export const User = () => {
             </p>
           </div>
           <div className={styles.btnBox}>
-            <button type="button" onClick={openModalHandler}>
+            <p className={styles.textBtn}>Хотите добавить товар в магазин?</p>
+            <button
+              className={styles.avatarBtn}
+              type="button"
+              onClick={openModalHandler}
+            >
               Добавить
             </button>
-            <button>Удалить</button>
-            <button>Редактировать</button>
           </div>
         </div>
       </div>
       <Modal isOpen={isOpen} closeHandler={closeModalHandler}>
-        <AddNewProduct />
+        <div className={styles.modal}>
+          <FontAwesomeIcon
+            className={styles.close}
+            icon={faXmark}
+            onClick={closeModalHandler}
+          />
+          <AddNewProduct />
+        </div>
       </Modal>
     </>
   )

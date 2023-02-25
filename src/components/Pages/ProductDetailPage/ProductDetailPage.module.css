@@ -139,3 +139,45 @@ span {
   justify-content: center;
   margin: 20px;
 }
+
+.modal {
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: white;
+  cursor: pointer;
+}
+
+.textDelete {
+  color: white;
+  font-size: 18px;
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 0px;
+}
+
+.btnDeleteBox {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btnDelete {
+  border: 1px solid white;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 4px;
+  color: white;
+  width: 100px;
+  margin-top: 6px;
+  display: flex;
+  justify-content: center;
+}
+
+.btnDelete:hover {
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
+}

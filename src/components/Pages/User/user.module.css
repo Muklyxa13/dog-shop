@@ -66,3 +66,20 @@
   display: flex;
   gap: 8px;
 }
+
+.modal {
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: white;
+  cursor: pointer;
+}
+
+.textBtn {
+  margin-top: 10px;
+  margin-bottom: 4px;
+}

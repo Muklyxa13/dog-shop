@@ -9,6 +9,34 @@
   flex-direction: column;
 }
 
+.inputBox > label {
+  color: white;
+  text-shadow: none;
+  font-weight: 500;
+}
+
 .errorMessage {
-  font-size: 10px;
+  display: flex;
+  height: 24px;
+  opacity: 0.5;
+}
+
+.error {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+}
+
+.btn {
+  border: 1px solid white;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 4px;
+  color: white;
+  width: 100px;
+  margin-top: 6px;
+}
+
+.btn:hover {
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
 }

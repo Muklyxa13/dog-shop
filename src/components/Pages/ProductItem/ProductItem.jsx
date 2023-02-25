@@ -6,14 +6,13 @@ import {
   getCartDetailsSelector,
 } from "../../../redux/slices/cartDetailsSlice"
 import sale from "../../../images/sale.png"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import {
   addFavorite,
   getFavoriteSelector,
 } from "../../../redux/slices/favoriteSlice"
 
 export const ProductItem = ({ id, name, pictures, discount, price, stock }) => {
-  const navigate = useNavigate()
   const dispath = useDispatch()
   const cartDataIds = useSelector(getCartDetailsSelector)
   const favoritePage = useSelector(getFavoriteSelector)
@@ -27,9 +26,6 @@ export const ProductItem = ({ id, name, pictures, discount, price, stock }) => {
     e.preventDefault()
     dispath(addFavorite(id))
   } // добавление товара в избранное
-  // const navigateToDetailPage = () => {
-  //   navigate(`/detail`)
-  // }
 
   return (
     <Link to={`./${id}`}>
