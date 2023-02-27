@@ -6,12 +6,10 @@ import styles from "./AddNewProduct.module.css"
 import { ErrorMessage, Field, Form, Formik } from "formik"
 import { validatorProduct } from "./validatorProduct"
 import { getTokenSelector } from "../../../redux/slices/userSlice"
-import { useNavigate } from "react-router-dom"
 import PropTypes from "prop-types"
 
 export const AddNewProduct = ({ closeModalHandler }) => {
   const token = useSelector(getTokenSelector)
-  const navigate = useNavigate()
   const queryClient = useQueryClient()
   const initProductValues = {
     pictures: "",
