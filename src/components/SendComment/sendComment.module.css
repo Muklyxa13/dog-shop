@@ -43,7 +43,7 @@
 
 .errorMessage {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   opacity: 0.5;
   height: 30px;
 }

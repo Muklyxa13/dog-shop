@@ -9,15 +9,23 @@ import { Modal } from "../../Modal/Modal"
 import { AddNewProduct } from "../AddNewProduct/AddNewProduct"
 import styles from "./user.module.css"
 import { faXmark } from "@fortawesome/free-solid-svg-icons"
+import { EditAvatarUser } from "../EditAvatarUser/EditAvatarUser"
 
 export const User = () => {
   const token = useSelector(getTokenSelector)
   const [isOpen, setIsOpen] = useState(false)
+  const [isOpenAvatarModal, setIsOpenAvatarModal] = useState(false)
   const closeModalHandler = () => {
     setIsOpen(false)
   }
   const openModalHandler = () => {
     setIsOpen(true)
+  }
+  const closeModalAvatarHandler = () => {
+    setIsOpenAvatarModal(false)
+  }
+  const openModalAvatarHandler = () => {
+    setIsOpenAvatarModal(true)
   }
 
   const { data, isLoading } = useQuery({
@@ -33,7 +41,11 @@ export const User = () => {
       <div className={styles.wr}>
         <div className={styles.avatarBox}>
           <img className={styles.avatar} src={data.avatar} alt="avatar" />
-          <button className={styles.avatarBtn} type="button">
+          <button
+            className={styles.avatarBtn}
+            type="button"
+            onClick={openModalAvatarHandler}
+          >
             Изменить аватар
           </button>
         </div>
@@ -81,6 +93,16 @@ export const User = () => {
             onClick={closeModalHandler}
           />
           <AddNewProduct closeModalHandler={closeModalHandler} />
+        </div>
+      </Modal>
+      <Modal isOpen={isOpenAvatarModal} closeHandler={closeModalAvatarHandler}>
+        <div className={styles.modal}>
+          <FontAwesomeIcon
+            className={styles.close}
+            icon={faXmark}
+            onClick={closeModalAvatarHandler}
+          />
+          <EditAvatarUser closeModalHandler={closeModalAvatarHandler} />
         </div>
       </Modal>
     </>

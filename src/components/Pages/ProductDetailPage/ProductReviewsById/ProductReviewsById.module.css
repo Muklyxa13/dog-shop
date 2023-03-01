@@ -73,7 +73,7 @@
 
 .date {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   opacity: 0.5;
 }
 
@@ -107,4 +107,13 @@
 .text::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
+}
+
+.clearCart {
+  min-height: 100px;
+}
+
+.clearCartText {
+  font-size: 20px;
+  font-style: italic;
 }

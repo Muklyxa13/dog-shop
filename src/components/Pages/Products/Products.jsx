@@ -5,7 +5,6 @@ import { useNavigate, useSearchParams } from "react-router-dom"
 import { dogFoodApi } from "../../../API/DogFoodApi"
 import { ProductItem } from "../ProductItem/ProductItem"
 import styles from "./products.module.css"
-import "./scroll.scss"
 import classNames from "classnames"
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -29,11 +28,21 @@ const ProductsInner = ({ data }) => {
     })
     switch (value) {
       case "priceUp":
-        data = [...data.products].sort((a, b) => (a.price > b.price ? 1 : -1))
+        data = [...data.products].sort((a, b) =>
+          (a.price * (100 - a.discount)) / 100 >
+          (b.price * (100 - b.discount)) / 100
+            ? 1
+            : -1
+        )
         setSort(data)
         break
       case "priceDown":
-        data = [...data.products].sort((a, b) => (b.price > a.price ? 1 : -1))
+        data = [...data.products].sort((a, b) =>
+          (b.price * (100 - b.discount)) / 100 >
+          (a.price * (100 - a.discount)) / 100
+            ? 1
+            : -1
+        )
         setSort(data)
         break
       case "discountUp":
@@ -163,12 +172,12 @@ const ProductsInner = ({ data }) => {
         </div>
         <FontAwesomeIcon
           onClick={clickToScrollUp}
-          className={classNames("scroll", "scrollUp")}
+          className={classNames(styles.scroll, styles.scrollUp)}
           icon={faCaretUp}
         />
         <FontAwesomeIcon
           onClick={clickToScrollDown}
-          className={classNames("scroll", "scrollDown")}
+          className={classNames(styles.scroll, styles.scrollDown)}
           icon={faCaretDown}
         />
       </div>

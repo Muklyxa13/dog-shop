@@ -116,5 +116,5 @@ export const AddNewProduct = ({ closeModalHandler }) => {
 }
 
 AddNewProduct.propTypes = {
-  closeModalHandler: PropTypes.element,
+  closeModalHandler: PropTypes.func,
 }

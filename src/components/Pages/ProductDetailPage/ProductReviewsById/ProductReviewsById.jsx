@@ -30,7 +30,9 @@ export const ProductReviewsById = () => {
     <>
       {!data.length ? (
         <div className={styles.clearCart}>
-          <p>Отзывов еще нет, будьте первыми!</p>
+          <p className={styles.clearCartText}>
+            Отзывов еще нет, будьте первыми!
+          </p>
         </div>
       ) : (
         <div className={styles.wr}>

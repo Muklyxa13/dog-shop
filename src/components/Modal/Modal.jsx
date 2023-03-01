@@ -89,12 +89,12 @@ export const Modal = ({ isOpen = false, closeHandler, children }) => {
 }
 
 Modal.propTypes = {
-  closeHandler: PropTypes.element,
+  closeHandler: PropTypes.func,
   children: PropTypes.element,
-  isOpen: PropTypes.element,
+  isOpen: PropTypes.bool,
 }
 
 ModalInner.propTypes = {
-  closeHandler: PropTypes.element,
+  closeHandler: PropTypes.func,
   children: PropTypes.element,
 }

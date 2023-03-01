@@ -118,5 +118,5 @@ export const EditProduct = ({ closeEditModalHandler }) => {
 }
 
 EditProduct.propTypes = {
-  closeEditModalHandler: PropTypes.element,
+  closeEditModalHandler: PropTypes.func,
 }
