@@ -1,3 +1,5 @@
+import { toast } from "react-hot-toast"
+
 class DogFoodApi {
   constructor({ baseUrl }) {
     this.baseUrl = baseUrl
@@ -109,6 +111,12 @@ class DogFoodApi {
       },
       body: JSON.stringify(values),
     })
+
+    if (res.status === 200)
+      toast.success("Отзыв успешно добавлен!", {
+        duration: 2000,
+      })
+
     return res.json()
   }
 
@@ -121,6 +129,12 @@ class DogFoodApi {
       },
       body: JSON.stringify(values),
     })
+
+    if (res.status === 201)
+      toast.success("Продукт успешно добавлен!", {
+        duration: 2000,
+      })
+
     return res.json()
   }
 
@@ -133,6 +147,12 @@ class DogFoodApi {
       },
       body: JSON.stringify(values),
     })
+
+    if (res.status === 200)
+      toast.success("Продукт успешно обновлен!", {
+        duration: 2000,
+      })
+
     return res.json()
   }
 
@@ -144,9 +164,13 @@ class DogFoodApi {
         "Content-type": "application/json",
       },
     })
-    if (res.status === 403) {
-      throw new Error(`Нельзя удалить чужой товар!. Status: ${res.status}`)
+
+    if (res.status === 200) {
+      toast.success("Продукт успешно удален!", {
+        duration: 2000,
+      })
     }
+
     return res.json()
   }
 
@@ -177,6 +201,12 @@ class DogFoodApi {
       },
       body: JSON.stringify(value),
     })
+
+    if (res.status === 200)
+      toast.success("Аватар успешно обновлен!", {
+        duration: 2000,
+      })
+
     return res.json()
   }
 }

@@ -29,28 +29,30 @@ export const EditAvatarUser = ({ closeModalHandler }) => {
   if (isLoading) return <Loader />
 
   return (
-    <Formik
-      initialValues={initAvatarValue}
-      validationSchema={validatorAvatar}
-      onSubmit={sumbitAvatarHandler}
-    >
-      <Form className={styles.wr}>
-        <div className={styles.inputBox}>
-          <label htmlFor="avatar">Ссылка</label>
-          <Field name="avatar" placeholder="url" type="text" />
-          <div className={styles.errorMessage}>
-            <ErrorMessage
-              component="p"
-              className={styles.error}
-              name="avatar"
-            />
+    <>
+      <Formik
+        initialValues={initAvatarValue}
+        validationSchema={validatorAvatar}
+        onSubmit={sumbitAvatarHandler}
+      >
+        <Form className={styles.wr}>
+          <div className={styles.inputBox}>
+            <label htmlFor="avatar">Ссылка</label>
+            <Field name="avatar" placeholder="url" type="text" />
+            <div className={styles.errorMessage}>
+              <ErrorMessage
+                component="p"
+                className={styles.error}
+                name="avatar"
+              />
+            </div>
           </div>
-        </div>
-        <button type="submit" className={styles.btn}>
-          Обновить
-        </button>
-      </Form>
-    </Formik>
+          <button type="submit" className={styles.btn}>
+            Обновить
+          </button>
+        </Form>
+      </Formik>
+    </>
   )
 }
 

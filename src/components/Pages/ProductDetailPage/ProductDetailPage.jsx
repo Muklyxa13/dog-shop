@@ -11,10 +11,12 @@ import styles from "./ProductDetailPage.module.css"
 import PropTypes from "prop-types"
 import {
   addCartDetails,
+  deleteCartDetails,
   getCartDetailsSelector,
 } from "../../../redux/slices/cartDetailsSlice"
 import {
   addFavorite,
+  deleteFavorite,
   getFavoriteSelector,
 } from "../../../redux/slices/favoriteSlice"
 import { SendComment } from "../../SendComment/SendComment"
@@ -24,6 +26,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faXmark } from "@fortawesome/free-solid-svg-icons"
 import { EditProduct } from "../EditProduct/EditProduct"
 import { useState } from "react"
+import { Toaster } from "react-hot-toast"
 
 export const ProductDetailPage = () => {
   const { productId } = useParams()
@@ -37,10 +40,12 @@ export const ProductDetailPage = () => {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
   const closeEditModalHandler = () => {
     document.body.style.overflow = ""
+    // document.body.style.paddingRight = ""
     setIsOpenEditModal(false)
   }
   const openEditModalHandler = () => {
     document.body.style.overflow = "hidden"
+    // document.body.style.paddingRight = "17px"
     setIsOpenEditModal(true)
   }
   const closeDeleteModalHandler = () => {
@@ -69,6 +74,8 @@ export const ProductDetailPage = () => {
 
   const deleteHandler = async () => {
     await mutateAsync()
+    dispath(deleteCartDetails(productId))
+    dispath(deleteFavorite(productId))
     document.body.style.overflow = ""
     navigate("/products")
   }
@@ -86,10 +93,6 @@ export const ProductDetailPage = () => {
       </div>
     )
   }
-
-  if (userId === data.author._id) {
-    console.log("это ваш товар")
-  } else console.log("это не ваш товар")
 
   const addItemToCart = () => dispath(addCartDetails(data._id)) // добавление товара в корзину
   const addProductFavorite = () => dispath(addFavorite(data._id)) // добавление товара в избранное
@@ -216,6 +219,19 @@ export const ProductDetailPage = () => {
           </div>
         </div>
       </Modal>
+      <Toaster
+        position="bottom-right"
+        reverseOrder={false}
+        toastOptions={{
+          style: {
+            border: "1px solid white",
+            borderRadius: "8px",
+            backgroundColor: "rgba(17, 28, 51, 0.6)",
+            padding: "4px",
+            color: "white",
+          },
+        }}
+      />
     </>
   )
 }

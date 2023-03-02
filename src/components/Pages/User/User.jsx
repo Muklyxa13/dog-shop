@@ -10,6 +10,7 @@ import { AddNewProduct } from "../AddNewProduct/AddNewProduct"
 import styles from "./user.module.css"
 import { faXmark } from "@fortawesome/free-solid-svg-icons"
 import { EditAvatarUser } from "../EditAvatarUser/EditAvatarUser"
+import { Toaster } from "react-hot-toast"
 
 export const User = () => {
   const token = useSelector(getTokenSelector)
@@ -105,6 +106,19 @@ export const User = () => {
           <EditAvatarUser closeModalHandler={closeModalAvatarHandler} />
         </div>
       </Modal>
+      <Toaster
+        position="bottom-right"
+        reverseOrder={false}
+        toastOptions={{
+          style: {
+            border: "1px solid white",
+            borderRadius: "8px",
+            backgroundColor: "rgba(17, 28, 51, 0.6)",
+            padding: "4px",
+            color: "white",
+          },
+        }}
+      />
     </>
   )
 }

@@ -212,13 +212,15 @@ export const Products = () => {
   })
 
   return (
-    <ProductsInnerWithQuery
-      data={data}
-      isLoading={isLoading}
-      isError={isError}
-      isFetching={isFetching}
-      error={error}
-      refetch={refetch}
-    />
+    <>
+      <ProductsInnerWithQuery
+        data={data}
+        isLoading={isLoading}
+        isError={isError}
+        isFetching={isFetching}
+        error={error}
+        refetch={refetch}
+      />
+    </>
   )
 }
