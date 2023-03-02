@@ -72,7 +72,10 @@ class DogFoodApi {
       },
     })
 
-    if (res.status > 299) {
+    if (res.status === 401) {
+      throw new Error(`Вы не авторизованы! Status: ${res.status}`)
+    }
+    if (res.status > 299 && res.status <= 400) {
       throw new Error(
         `Ошибка при получении списка продуктов. Status: ${res.status}`
       )

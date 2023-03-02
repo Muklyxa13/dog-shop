@@ -44,7 +44,7 @@ export const AddNewProduct = ({ closeModalHandler }) => {
       <Form className={styles.wr}>
         <div className={styles.inputBox}>
           <label htmlFor="pictures">Ссылка</label>
-          <Field name="pictures" placeholder="url" type="text" />
+          <Field name="pictures" placeholder="url фото продукта" type="text" />
           <div className={styles.errorMessage}>
             <ErrorMessage
               component="p"

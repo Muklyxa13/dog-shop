@@ -2,18 +2,24 @@
 /* eslint react/prop-types: 0 */
 
 import PropTypes from "prop-types"
+import { useNavigate } from "react-router-dom"
 import { Loader } from "../Loader/Loader"
 import styles from "./withQuery.module.css"
 
 export const withQuery =
   (WrappedComponent) =>
-  ({ isLoading, isError, error, refetch, isFetching, ...rest }) => {
+  ({ isLoading, isError, error, isFetching, ...rest }) => {
+    const navigate = useNavigate()
+    const navigateToSignIn = () => {
+      navigate("/signIn")
+    }
+
     if (isError) {
       return (
         <div className={styles.error}>
-          <p>{error.message}</p>
-          <button onClick={refetch} type="button">
-            Повторить запрос
+          <p className={styles.errorMessage}>{error.message}</p>
+          <button className={styles.errorBtn} onClick={navigateToSignIn}>
+            Авторизация
           </button>
         </div>
       )
@@ -32,7 +38,6 @@ export const withQuery =
 withQuery.propTypes = {
   isLoading: PropTypes.bool,
   isError: PropTypes.bool,
-  refetch: PropTypes.func,
   error: PropTypes.shape({
     message: PropTypes.string,
   }),

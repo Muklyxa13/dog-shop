@@ -38,7 +38,7 @@ export const EditAvatarUser = ({ closeModalHandler }) => {
         <Form className={styles.wr}>
           <div className={styles.inputBox}>
             <label htmlFor="avatar">Ссылка</label>
-            <Field name="avatar" placeholder="url" type="text" />
+            <Field name="avatar" placeholder="Url фото" type="text" />
             <div className={styles.errorMessage}>
               <ErrorMessage
                 component="p"

@@ -14,7 +14,6 @@ import { useSelector } from "react-redux"
 import { getQueryKey } from "./utils"
 import { getSearchSelector } from "../../../redux/slices/filterSlice"
 import { getTokenSelector } from "../../../redux/slices/userSlice"
-
 const ProductsInner = ({ data }) => {
   const [sortParams, setSortParams] = useSearchParams()
   const [sort, setSort] = useState(data.products)

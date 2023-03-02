@@ -71,7 +71,7 @@ export const Modal = ({ isOpen = false, closeHandler, children }) => {
     return (
       <motion.div
         className={styles.modarWr}
-        onClick={closeModalByClickWrapper}
+        onMouseDown={closeModalByClickWrapper}
         variants={modalWrVariants}
         initial="hidden"
         animate="visable"

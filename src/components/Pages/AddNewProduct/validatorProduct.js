@@ -4,19 +4,15 @@ export const validatorProduct = Yup.object({
   pictures: Yup.string()
     .url("Должна быть ссылка")
     .required("Необходимо вставить url картинки"),
-  name: Yup.string().required("Необходимо написать название товара"),
-  price: Yup.number()
-    .required("Необходимо написать цену")
-    .typeError("Данные не число"),
+  name: Yup.string().required("Добавьте название товара"),
+  price: Yup.number().required("Добавьте цену").typeError("Данные не число"),
   discount: Yup.number()
-    .required("Необходимо написать скидку")
+    .required("Добавьте скидку")
     .typeError("Данные не число"),
-  stock: Yup.number()
-    .required("Необходимо написать остаток")
-    .typeError("Данные не число"),
-  wight: Yup.string().required("Необходимо написать вес"),
+  stock: Yup.number().required("Добавьте остаток").typeError("Данные не число"),
+  wight: Yup.string().required("Добавьте вес"),
   description: Yup.string()
     .min(3, "Введите больше 3 символов")
     .max(50, "Описание слишком длинное")
-    .required("Необходимо написать описание"),
+    .required("Добавьте описание"),
 })
