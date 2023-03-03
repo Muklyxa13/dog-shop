@@ -1,22 +1,41 @@
-import { useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { dogFoodApi } from "../../../../API/DogFoodApi"
-import { getTokenSelector } from "../../../../redux/slices/userSlice"
+import {
+  getTokenSelector,
+  getUserIdSelector,
+} from "../../../../redux/slices/userSlice"
 import { Loader } from "../../../Loader/Loader"
 import { ReactComponent as Star } from "../../../../images/star_painted.svg"
 import styles from "./ProductReviewsById.module.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faTrashCan } from "@fortawesome/free-regular-svg-icons"
 
 export const ProductReviewsById = () => {
   const { productId } = useParams()
   const token = useSelector(getTokenSelector)
+  const userId = useSelector(getUserIdSelector)
+  const queryClient = useQueryClient()
   const { data, isLoading } = useQuery({
     queryKey: ["reviews"],
     queryFn: () => dogFoodApi.getReviewsById(productId, token),
     keepPreviousData: true,
   })
 
-  if (isLoading) return <Loader />
+  const { mutateAsync, isLoading: isLoadingDelete } = useMutation({
+    mutationFn: (reviewId) =>
+      dogFoodApi.deleteComment(token, productId, reviewId),
+  })
+
+  const deleteHandler = async (reviewId) => {
+    await mutateAsync(reviewId)
+    queryClient.invalidateQueries({
+      queryKey: ["reviews"],
+    })
+  }
+
+  if (isLoading || isLoadingDelete) return <Loader />
 
   const stars = (rating) => {
     let arrStars = [] // хранилище для *
@@ -65,14 +84,27 @@ export const ProductReviewsById = () => {
                 <hr className={styles.hr} />
                 <p className={styles.text}>{el.text}</p>
                 <hr className={styles.hr} />
-                <p className={styles.date}>
-                  Дата отзыва:{" "}
-                  {el.created_at
-                    .substring(0, 10)
-                    .split("-")
-                    .reverse()
-                    .join(".")}
-                </p>
+                <div className={styles.deleteCommentBox}>
+                  {el.author._id === userId ? (
+                    <>
+                      <FontAwesomeIcon
+                        className={styles.trash}
+                        icon={faTrashCan}
+                        onClick={() => deleteHandler(el._id)}
+                      />
+                    </>
+                  ) : (
+                    <p></p>
+                  )}
+                  <p className={styles.date}>
+                    Дата отзыва:{" "}
+                    {el.created_at
+                      .substring(0, 10)
+                      .split("-")
+                      .reverse()
+                      .join(".")}
+                  </p>
+                </div>
               </div>
             ))
             .reverse()}

@@ -212,6 +212,25 @@ class DogFoodApi {
 
     return res.json()
   }
+
+  async deleteComment(token, productId, reviewId) {
+    const res = await fetch(
+      `${this.baseUrl}/products/review/${productId}/${reviewId}`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${token}`,
+          "Content-type": "application/json",
+        },
+      }
+    )
+    if (res.status === 200)
+      toast.success("Отзыв удален!", {
+        duration: 2000,
+      })
+
+    return res.json()
+  }
 }
 
 export const dogFoodApi = new DogFoodApi({

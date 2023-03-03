@@ -162,7 +162,7 @@ export const ProductDetailPage = () => {
             <span>Остаток:</span> {data.stock} шт
           </p>
           <p className={styles.wight}>
-            <span>Вес:</span> {data.wight}
+            <span>Вес:</span> {data.wight} г
           </p>
           <p className={styles.descriptionTitle}>
             <span>О товаре:</span>

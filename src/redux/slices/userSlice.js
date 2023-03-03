@@ -28,3 +28,4 @@ export const userReducer = userSlice.reducer
 export const getUserSelector = (state) => state.user
 export const getTokenSelector = (state) => state.user.token
 export const getUserIdSelector = (state) => state.user._id
+export const getUserEmailSelector = (state) => state.user.email

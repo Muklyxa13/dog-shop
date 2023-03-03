@@ -37,7 +37,7 @@ export const User = () => {
   if (isLoading) return <Loader />
 
   return (
-    <>
+    <div>
       <h3 className={styles.title}>Информация о пользователе</h3>
       <div className={styles.wr}>
         <div className={styles.avatarBox}>
@@ -119,6 +119,6 @@ export const User = () => {
           },
         }}
       />
-    </>
+    </div>
   )
 }

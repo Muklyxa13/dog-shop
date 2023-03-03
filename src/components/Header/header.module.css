@@ -1,9 +1,9 @@
 .wr {
   position: sticky;
   top: 0;
-  box-shadow: 0 0 10px 14px rgb(255, 255, 255);
-  z-index: 1;
-  background: linear-gradient(rgb(83, 83, 83), rgb(255, 255, 255));
+  box-shadow: 0 0 4px 10px #ffffff;
+  z-index: 2;
+  background: -webkit-linear-gradient(top, #787878, #ffffff);
 }
 
 .headerLink {
@@ -16,8 +16,8 @@
 }
 
 .logoImg {
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
 }
 
 .headerUl {
@@ -29,7 +29,6 @@
 }
 
 .btn {
-  border: 1px solid white;
   border-radius: 8px;
   background-color: rgba(17, 28, 51, 0.6);
   padding: 4px;
@@ -50,7 +49,6 @@
 
 .productsLink {
   align-self: center;
-  border: 1px solid white;
   border-radius: 8px;
   background-color: rgba(17, 28, 51, 0.6);
   padding: 4px;
@@ -71,7 +69,6 @@
 }
 
 .exitBtn {
-  border: 1px solid white;
   border-radius: 8px;
   background-color: rgba(17, 28, 51, 0.6);
   padding: 4px;
@@ -85,7 +82,6 @@
 .cart {
   font-size: 16px;
   background: transparent;
-  border: 1px solid white;
   border-radius: 8px;
   background-color: rgba(17, 28, 51, 0.6);
   padding: 4px;
@@ -110,7 +106,6 @@
   height: 100%;
   font-size: 16px;
   background: transparent;
-  border: 1px solid white;
   border-radius: 8px;
   background-color: rgba(17, 28, 51, 0.6);
   padding: 4px;

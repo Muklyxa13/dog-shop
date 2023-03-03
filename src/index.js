@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import React from "react"
 import ReactDOM from "react-dom/client"
 import "./index.css"
@@ -60,7 +61,7 @@ const router = createBrowserRouter(
           element: <AddNewProduct />,
         },
         {
-          // path: "main",
+          path: "/",
           index: true,
           element: <Main />,
         },

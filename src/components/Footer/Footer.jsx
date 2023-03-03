@@ -17,16 +17,12 @@ export const Footer = () => {
           <div className={styles.footer_links}>
             <Link to={"/"}>HAPPY DOG</Link>
             <Link to={"/"}>PLATINUM</Link>
-            <Link to={"/"}>HUNTER</Link>
-            <Link to={"/"}>KONG</Link>
             <Link to={"/"}>DOG&apos;S FAVORITE</Link>
-            <Link to={"/"}>VETDIETOLOG</Link>
           </div>
         </div>
         <div className={styles.footer_group}>
           <h5>Информация</h5>
           <div className={styles.footer_links}>
-            <Link to={"/"}>О магазине</Link>
             <Link to={"/"}>Оплата</Link>
             <Link to={"/"}>Доставка</Link>
             <Link to={"/"}>Контакты</Link>
@@ -51,7 +47,7 @@ export const Footer = () => {
           <div className={styles.footer_links}>
             <Link to={"/signin"}>Вход</Link>
             <Link to={"/signup"}>Регистрация</Link>
-            <Link to={"/"}>Забыли пароль?</Link>
+            <Link to={"/user"}>Пользователь</Link>
           </div>
         </div>
       </div>

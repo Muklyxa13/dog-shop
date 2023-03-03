@@ -92,9 +92,9 @@ const ProductsInner = ({ data }) => {
     <>
       <div className={styles.btnSortWr}>
         <div className={styles.btnSortContainer}>
-          <p>Сортировка товаров:</p>
+          <p className={styles.btnSortText}>Сортировка товаров:</p>
           <div className={styles.btnPrice}>
-            <p>Цена:</p>
+            <p className={styles.btnSortText}>Цена:</p>
             <button
               className={styles.btnSort}
               type="button"
@@ -111,7 +111,7 @@ const ProductsInner = ({ data }) => {
             </button>
           </div>
           <div className={styles.btnDiscount}>
-            <p>Скидка:</p>
+            <p className={styles.btnSortText}>Скидка:</p>
             <button
               className={styles.btnSort}
               type="button"
@@ -128,7 +128,7 @@ const ProductsInner = ({ data }) => {
             </button>
           </div>
           <div className={styles.btnName}>
-            <p>Дата добавления:</p>
+            <p className={styles.btnSortText}>Дата добавления:</p>
             <button
               className={styles.btnSort}
               type="button"
@@ -145,7 +145,7 @@ const ProductsInner = ({ data }) => {
             </button>
           </div>
           <div className={styles.btnName}>
-            <p>Название:</p>
+            <p className={styles.btnSortText}>Название:</p>
             <button
               className={styles.btnSort}
               type="button"

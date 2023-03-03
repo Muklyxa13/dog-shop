@@ -24,15 +24,17 @@
 }
 
 .formSignIn button {
-  border: 1px solid black;
   border-radius: 8px;
   width: 150px;
   align-self: center;
   margin-top: 4px;
+  background-color: rgba(17, 28, 51, 0.2);
+  padding: 4px;
+  color: white;
 }
 
 .formSignIn button:hover {
-  box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5);
 }
 
 .errorMessage {
