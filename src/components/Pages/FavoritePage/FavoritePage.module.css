@@ -17,9 +17,9 @@
 
 .btnToCart {
   padding: 15px;
-  background-color: rgba(17, 28, 51, 0.9);
+  background-color: rgba(17, 28, 51, 0.6);
   color: white;
-  border: 1px solid white;
+  border: none;
   border-radius: 10px;
   position: sticky;
   top: 146px;
@@ -27,20 +27,20 @@
 }
 
 .btnToCart:hover {
-  box-shadow: 0 0 10px 5px rgba(17, 28, 51, 0.9);
+  box-shadow: 0 0 10px 10px white;
 }
 
 .btnClear {
-  background-color: rgba(17, 28, 51, 0.9);
+  background-color: rgba(17, 28, 51, 0.6);
   color: white;
-  border: 1px solid white;
+  border: none;
   border-radius: 8px;
   padding: 4px;
   margin-top: 8px;
 }
 
 .btnClear:hover {
-  box-shadow: 0 0 4px 1px rgba(17, 28, 51, 0.9);
+  box-shadow: 0 0 10px 4px white;
 }
 
 .clearCart {

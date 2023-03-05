@@ -16,7 +16,7 @@ import { getSearchSelector } from "../../../redux/slices/filterSlice"
 import { getTokenSelector } from "../../../redux/slices/userSlice"
 const ProductsInner = ({ data }) => {
   const [sortParams, setSortParams] = useSearchParams()
-  const [sort, setSort] = useState(data.products)
+  const [sort, setSort] = useState(data)
 
   const productSort = (value) => {
     const newSortValue = value
@@ -27,7 +27,7 @@ const ProductsInner = ({ data }) => {
     })
     switch (value) {
       case "priceUp":
-        data = [...data.products].sort((a, b) =>
+        data = [...data].sort((a, b) =>
           (a.price * (100 - a.discount)) / 100 >
           (b.price * (100 - b.discount)) / 100
             ? 1
@@ -36,7 +36,7 @@ const ProductsInner = ({ data }) => {
         setSort(data)
         break
       case "priceDown":
-        data = [...data.products].sort((a, b) =>
+        data = [...data].sort((a, b) =>
           (b.price * (100 - b.discount)) / 100 >
           (a.price * (100 - a.discount)) / 100
             ? 1
@@ -45,35 +45,27 @@ const ProductsInner = ({ data }) => {
         setSort(data)
         break
       case "discountUp":
-        data = [...data.products].sort((a, b) =>
-          b.discount > a.discount ? 1 : -1
-        )
+        data = [...data].sort((a, b) => (b.discount > a.discount ? 1 : -1))
         setSort(data)
         break
       case "discountDown":
-        data = [...data.products].sort((a, b) =>
-          a.discount > b.discount ? 1 : -1
-        )
+        data = [...data].sort((a, b) => (a.discount > b.discount ? 1 : -1))
         setSort(data)
         break
       case "nameUp":
-        data = [...data.products].sort((a, b) => a.name.localeCompare(b.name))
+        data = [...data].sort((a, b) => a.name.localeCompare(b.name))
         setSort(data)
         break
       case "nameDown":
-        data = [...data.products].sort((a, b) => b.name.localeCompare(a.name))
+        data = [...data].sort((a, b) => b.name.localeCompare(a.name))
         setSort(data)
         break
       case "dateUp":
-        data = [...data.products].sort((a, b) =>
-          a.created_at > b.created_at ? 1 : -1
-        )
+        data = [...data].sort((a, b) => (a.created_at > b.created_at ? 1 : -1))
         setSort(data)
         break
       case "dateDown":
-        data = [...data.products].sort((a, b) =>
-          b.created_at > a.created_at ? 1 : -1
-        )
+        data = [...data].sort((a, b) => (b.created_at > a.created_at ? 1 : -1))
         setSort(data)
         break
       default:
@@ -82,8 +74,8 @@ const ProductsInner = ({ data }) => {
   }
 
   useEffect(() => {
-    setSort(data.products)
-  }, [data.products])
+    setSort(data)
+  }, [data])
 
   const clickToScrollUp = () => window.scrollTo(0, 0) // скрол вверх
   const clickToScrollDown = () => window.scrollTo(0, document.body.scrollHeight) // скрол вниз
@@ -185,9 +177,7 @@ const ProductsInner = ({ data }) => {
 }
 
 ProductsInner.propTypes = {
-  data: PropTypes.shape({
-    products: PropTypes.array,
-  }),
+  data: PropTypes.array,
 }
 
 const ProductsInnerWithQuery = withQuery(ProductsInner) // HOC

@@ -66,7 +66,7 @@ class DogFoodApi {
   }
 
   async getAllProducts(search, token) {
-    const res = await fetch(`${this.baseUrl}/products?query=${search}`, {
+    const res = await fetch(`${this.baseUrl}/products/search?query=${search}`, {
       headers: {
         authorization: `Bearer ${token}`,
       },
