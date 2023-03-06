@@ -11,6 +11,7 @@ import {
   getCartDetailsSelector,
   incrementCartDetails,
 } from "../../../redux/slices/cartDetailsSlice"
+import { Link } from "react-router-dom"
 
 export const CartItem = ({
   id,
@@ -59,7 +60,9 @@ export const CartItem = ({
           onChange={onSelectProduct}
           className={styles.itemInput}
         />
-        <img src={pictures} alt="imgItem" className={styles.itemImg} />
+        <Link to={`./${id}`}>
+          <img src={pictures} alt="imgItem" className={styles.itemImg} />
+        </Link>
         <div className={styles.itemInfo}>
           <h5>&quot;{name}&quot;</h5>
           <p className={styles.itemDescr}>Описание товара:</p>

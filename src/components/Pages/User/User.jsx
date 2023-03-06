@@ -61,8 +61,7 @@ export const User = () => {
               {data.name.split(" ").slice(1, 2)}
             </p>
             <p className={styles.about}>
-              <span className={styles.span}>Информация:</span> Думает что
-              &laquo;
+              <span className={styles.span}>Должность:</span> &laquo;
               {data.about.toLowerCase()}&raquo;
             </p>
             <p className={styles.group}>

@@ -33,6 +33,10 @@ const router = createBrowserRouter(
           element: <Cart />,
         },
         {
+          path: "/cart/:productId",
+          element: <ProductDetailPage />,
+        },
+        {
           path: "signup",
           element: <SignUp />,
         },
@@ -51,6 +55,10 @@ const router = createBrowserRouter(
         {
           path: "/favorite",
           element: <FavoritePage />,
+        },
+        {
+          path: "/favorite/:productId",
+          element: <ProductDetailPage />,
         },
         {
           path: "/user",

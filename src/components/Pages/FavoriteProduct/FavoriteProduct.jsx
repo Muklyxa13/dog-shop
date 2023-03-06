@@ -11,6 +11,7 @@ import {
   addCartDetails,
   getCartDetailsSelector,
 } from "../../../redux/slices/cartDetailsSlice"
+import { Link } from "react-router-dom"
 
 export const FavoriteProduct = ({
   id,
@@ -40,7 +41,9 @@ export const FavoriteProduct = ({
   return (
     <div className={styles.item}>
       <div className={styles.itemBox}>
-        <img src={pictures} alt="imgItem" className={styles.itemImg} />
+        <Link to={`./${id}`}>
+          <img src={pictures} alt="imgItem" className={styles.itemImg} />
+        </Link>
         <div className={styles.itemInfo}>
           <h5>&quot;{name}&quot;</h5>
           <p className={styles.itemDescr}>Описание товара:</p>
