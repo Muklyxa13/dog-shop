@@ -9,18 +9,27 @@ import { validatorProduct } from "../AddNewProduct/validatorProduct"
 import styles from "./EditProduct.module.css"
 import PropTypes from "prop-types"
 
-export const EditProduct = ({ closeEditModalHandler }) => {
+export const EditProduct = ({
+  closeEditModalHandler,
+  pictures,
+  name,
+  price,
+  discount,
+  stock,
+  wight,
+  description,
+}) => {
   const { productId } = useParams()
   const token = useSelector(getTokenSelector)
   const queryClient = useQueryClient()
   const initEditProductValues = {
-    pictures: "",
-    name: "",
-    price: "",
-    discount: "",
-    stock: "",
-    wight: "",
-    description: "",
+    pictures,
+    name,
+    price,
+    discount,
+    stock,
+    wight,
+    description,
   }
 
   const { mutateAsync, isLoading } = useMutation({
@@ -119,4 +128,11 @@ export const EditProduct = ({ closeEditModalHandler }) => {
 
 EditProduct.propTypes = {
   closeEditModalHandler: PropTypes.func,
+  pictures: PropTypes.string,
+  name: PropTypes.string,
+  price: PropTypes.number,
+  discount: PropTypes.number,
+  stock: PropTypes.number,
+  wight: PropTypes.number,
+  description: PropTypes.string,
 }

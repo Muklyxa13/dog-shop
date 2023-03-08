@@ -8,11 +8,11 @@ import { validatorAvatar } from "./validatorAvatar"
 import styles from "./EditAvatarUser.module.css"
 import PropTypes from "prop-types"
 
-export const EditAvatarUser = ({ closeModalHandler }) => {
+export const EditAvatarUser = ({ closeModalHandler, avatar }) => {
   const token = useSelector(getTokenSelector)
   const queryClient = useQueryClient()
   const initAvatarValue = {
-    avatar: "",
+    avatar,
   }
   const { mutateAsync, isLoading } = useMutation({
     mutationFn: (value) => dogFoodApi.editUserAvatar(token, value),
@@ -58,4 +58,5 @@ export const EditAvatarUser = ({ closeModalHandler }) => {
 
 EditAvatarUser.propTypes = {
   closeModalHandler: PropTypes.func,
+  avatar: PropTypes.string,
 }

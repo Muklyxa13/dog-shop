@@ -162,7 +162,7 @@ export const ProductDetailPage = () => {
             <span>Остаток:</span> {data.stock} шт
           </p>
           <p className={styles.wight}>
-            <span>Вес:</span> {data.wight} г
+            <span>Вес:</span> {data.wight}
           </p>
           <p className={styles.descriptionTitle}>
             <span>О товаре:</span>
@@ -186,7 +186,16 @@ export const ProductDetailPage = () => {
             icon={faXmark}
             onClick={closeEditModalHandler}
           />
-          <EditProduct closeEditModalHandler={closeEditModalHandler} />
+          <EditProduct
+            closeEditModalHandler={closeEditModalHandler}
+            pictures={data.pictures}
+            name={data.name}
+            price={data.price}
+            discount={data.discount}
+            stock={data.stock}
+            wight={data.wight}
+            description={data.description}
+          />
         </div>
       </Modal>
       <Modal isOpen={isOpenDeleteModal} closeHandler={closeDeleteModalHandler}>

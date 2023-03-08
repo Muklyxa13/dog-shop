@@ -102,7 +102,10 @@ export const User = () => {
             icon={faXmark}
             onClick={closeModalAvatarHandler}
           />
-          <EditAvatarUser closeModalHandler={closeModalAvatarHandler} />
+          <EditAvatarUser
+            closeModalHandler={closeModalAvatarHandler}
+            avatar={data.avatar}
+          />
         </div>
       </Modal>
       <Toaster
