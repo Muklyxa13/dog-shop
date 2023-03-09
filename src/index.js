@@ -75,8 +75,8 @@ const router = createBrowserRouter(
         },
       ],
     },
-  ],
-  { basename: "/dog-shop/" }
+  ]
+  // { basename: "/dog-shop/" }
 )
 
 const queryClient = new QueryClient({
